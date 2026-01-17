@@ -6,6 +6,8 @@ import org.springframework.stereotype.Component;
 import uk.ac.mmu.game.applicationcode.usecase.RequiredHistoricGame;
 
 import uk.ac.mmu.game.applicationcode.usecase.playhistoric.ProvidedPlayHistoric;
+import uk.ac.mmu.game.applicationcode.usecase.playhistoric.Request;
+import uk.ac.mmu.game.applicationcode.usecase.playhistoric.Response;
 
 @Component
 public class PlayHistoricInitializer implements CommandLineRunner, Ordered {
@@ -19,12 +21,15 @@ public class PlayHistoricInitializer implements CommandLineRunner, Ordered {
     @Override
     public void run(String... args) {
         System.out.println("=== Starting Historic Game ===");
-        ProvidedPlayHistoric.getInstance(historicGame).play();
+        Request req = new Request(historicGame.getDice(),historicGame.getAssetFactory(),historicGame.getHitCondition(),historicGame.getWinCondition());
+        Response success = ProvidedPlayHistoric.handle(req).play();
+        if(!success.isSuccess()){
+            System.out.println("=== Historic Game failed ===");
+        }
     }
 
     @Override
     public int getOrder() {
-        // Ensures it runs after normal games
         return Ordered.LOWEST_PRECEDENCE;
     }
 }
