@@ -8,6 +8,7 @@ import uk.ac.mmu.game.applicationcode.domain.rules.Outcomes.NormalOutcome;
 import uk.ac.mmu.game.applicationcode.domain.rules.Outcomes.OverShootOutcome;
 import uk.ac.mmu.game.applicationcode.domain.rules.Outcomes.WinOutcome;
 
+
 public class WinConditionExact implements WinCondition {
     @Override
     public MoveOutcome checkWin(Board board, MoveResult move) {

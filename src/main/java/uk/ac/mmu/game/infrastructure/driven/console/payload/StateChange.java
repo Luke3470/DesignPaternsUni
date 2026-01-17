@@ -1,4 +1,4 @@
-package uk.ac.mmu.game.infrastructure.console.payload;
+package uk.ac.mmu.game.infrastructure.driven.console.payload;
 
 public class StateChange {
     public String currentState;

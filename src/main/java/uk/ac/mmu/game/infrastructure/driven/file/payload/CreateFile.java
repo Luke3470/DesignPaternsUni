@@ -1,4 +1,4 @@
-package uk.ac.mmu.game.infrastructure.file.payload;
+package uk.ac.mmu.game.infrastructure.driven.file.payload;
 
 
 import uk.ac.mmu.game.applicationcode.domain.dice.Types.RollValue;

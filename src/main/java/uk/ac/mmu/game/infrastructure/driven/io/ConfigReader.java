@@ -1,4 +1,4 @@
-package uk.ac.mmu.game.infrastructure.io;
+package uk.ac.mmu.game.infrastructure.driven.io;
 
 import uk.ac.mmu.game.applicationcode.domain.config.GameConfig;
 

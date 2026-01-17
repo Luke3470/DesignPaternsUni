@@ -4,7 +4,7 @@ package uk.ac.mmu.game.applicationcode.domain.rules.Outcomes;
 import uk.ac.mmu.game.applicationcode.domain.entities.MoveResult;
 import uk.ac.mmu.game.applicationcode.domain.state.GameStateInPlay;
 
-class WinOutcome extends MoveOutcome {
+public class WinOutcome extends MoveOutcome {
 
     public WinOutcome() {
         this.endsGame = true;

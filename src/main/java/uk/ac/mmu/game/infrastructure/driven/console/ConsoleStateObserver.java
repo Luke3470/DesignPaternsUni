@@ -1,9 +1,9 @@
-package uk.ac.mmu.game.infrastructure.console;
+package uk.ac.mmu.game.infrastructure.driven.console;
 
 import uk.ac.mmu.game.applicationcode.domain.observers.StateObserver;
-import uk.ac.mmu.game.infrastructure.console.payload.EndState;
-import uk.ac.mmu.game.infrastructure.console.payload.StateChange;
-import uk.ac.mmu.game.infrastructure.console.payload.ViewState;
+import uk.ac.mmu.game.infrastructure.driven.console.payload.EndState;
+import uk.ac.mmu.game.infrastructure.driven.console.payload.StateChange;
+import uk.ac.mmu.game.infrastructure.driven.console.payload.ViewState;
 
 public class ConsoleStateObserver implements StateObserver {
 

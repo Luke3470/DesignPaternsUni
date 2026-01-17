@@ -12,11 +12,12 @@ import uk.ac.mmu.game.applicationcode.domain.rules.WinCondition;
 import uk.ac.mmu.game.applicationcode.domain.state.GameState;
 import uk.ac.mmu.game.applicationcode.domain.state.GameStateGameOver;
 import uk.ac.mmu.game.applicationcode.domain.state.GameStateReady;
-import uk.ac.mmu.game.infrastructure.console.ConsolePlayObserver;
-import uk.ac.mmu.game.infrastructure.console.ConsoleStateObserver;
-import uk.ac.mmu.game.infrastructure.console.payload.Initialization;
-import uk.ac.mmu.game.infrastructure.file.TextFileObserver;
-import uk.ac.mmu.game.infrastructure.file.payload.CreateFile;
+import uk.ac.mmu.game.infrastructure.driven.console.ConsolePlayObserver;
+import uk.ac.mmu.game.infrastructure.driven.console.ConsoleStateObserver;
+import uk.ac.mmu.game.infrastructure.driven.console.payload.Initialization;
+import uk.ac.mmu.game.infrastructure.driven.file.TextFileObserver;
+import uk.ac.mmu.game.infrastructure.driven.file.payload.CreateFile;
+
 
 import java.util.ArrayList;
 import java.util.List;

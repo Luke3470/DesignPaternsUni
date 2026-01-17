@@ -1,13 +1,13 @@
-package uk.ac.mmu.game.infrastructure.file;
+package uk.ac.mmu.game.infrastructure.driven.file;
 
 import uk.ac.mmu.game.applicationcode.domain.dice.Types.RollValue;
 import uk.ac.mmu.game.applicationcode.domain.observers.FileObserver;
-import uk.ac.mmu.game.infrastructure.file.payload.CreateFile;
+import uk.ac.mmu.game.infrastructure.driven.file.payload.CreateFile;
 
 import java.io.FileWriter;
 import java.io.IOException;
 
-class TextFileObserver implements FileObserver {
+public class TextFileObserver implements FileObserver {
     private final String savePath;
 
     public TextFileObserver(String savePath) {

@@ -14,7 +14,7 @@ import uk.ac.mmu.game.applicationcode.domain.observers.StateObserver;
 import uk.ac.mmu.game.applicationcode.domain.rules.HitCondition;
 import uk.ac.mmu.game.applicationcode.domain.rules.Outcomes.MoveOutcome;
 import uk.ac.mmu.game.applicationcode.domain.rules.WinCondition;
-import uk.ac.mmu.game.infrastructure.console.payload.*;
+import uk.ac.mmu.game.infrastructure.driven.console.payload.*;
 
 import java.util.Stack;
 

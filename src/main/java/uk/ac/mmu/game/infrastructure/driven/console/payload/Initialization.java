@@ -1,4 +1,4 @@
-package uk.ac.mmu.game.infrastructure.console.payload;
+package uk.ac.mmu.game.infrastructure.driven.console.payload;
 
 
 import uk.ac.mmu.game.applicationcode.domain.dice.Dice;
