@@ -3,8 +3,6 @@ package uk.ac.mmu.game.applicationcode.domain.state;
 import uk.ac.mmu.game.applicationcode.domain.Game;
 import uk.ac.mmu.game.applicationcode.domain.dice.NonRandomDice;
 import uk.ac.mmu.game.applicationcode.domain.observers.FileObserver;
-import uk.ac.mmu.game.applicationcode.domain.observers.StateObserver;
-import uk.ac.mmu.game.infrastructure.driven.console.payload.*;
 import uk.ac.mmu.game.infrastructure.driven.file.payload.*;
 
 public class GameStateGameOver implements GameState {
@@ -25,26 +23,15 @@ public class GameStateGameOver implements GameState {
         game.notifyObservers(FileObserver.class, FileObserver -> FileObserver.onEvent(file));
 
     }
+
     @Override
     public void next(){
-        updateState("Game Over",null);
-    }
-
-    @Override
-    public void updateState(String currentState, String nextState){
-        EndState event = new EndState(currentState);
-        game.notifyObservers(StateObserver.class, StateObserver -> StateObserver.onEvent(event));
-    }
-
-    @Override
-    public void displayState(String state) {
-        ViewState event = new ViewState(state);
-        game.notifyObservers(StateObserver.class, StateObserver -> StateObserver.onEvent(event));
+        game.getMediator().notifyStateChange("Game Over", null);
     }
 
     @Override
     public void show() {
-        displayState("Game Over");
+        game.getMediator().notifyViewState("Game Over");
     }
 
     @Override

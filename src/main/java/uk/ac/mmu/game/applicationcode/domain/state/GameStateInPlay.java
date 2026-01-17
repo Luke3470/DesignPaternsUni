@@ -9,8 +9,8 @@ import uk.ac.mmu.game.applicationcode.domain.entities.Command;
 import uk.ac.mmu.game.applicationcode.domain.entities.MoveCommand;
 import uk.ac.mmu.game.applicationcode.domain.entities.MoveResult;
 import uk.ac.mmu.game.applicationcode.domain.entities.Player;
+import uk.ac.mmu.game.applicationcode.domain.mediator.GameStateMediator;
 import uk.ac.mmu.game.applicationcode.domain.observers.PlayObserver;
-import uk.ac.mmu.game.applicationcode.domain.observers.StateObserver;
 import uk.ac.mmu.game.applicationcode.domain.rules.HitCondition;
 import uk.ac.mmu.game.applicationcode.domain.rules.Outcomes.MoveOutcome;
 import uk.ac.mmu.game.applicationcode.domain.rules.WinCondition;
@@ -25,12 +25,14 @@ public class GameStateInPlay implements GameState {
     public Stack<Command> history = null;
     public int turn = 0;
     public int totalTurns = 0;
+    public GameStateMediator mediator;
 
     GameStateInPlay(Game game){
         this.game = game;
         this.hitCondition = game.getHitCondition();
         this.winCondition = game.getWinCondition();
         this.history = new Stack<>();
+        this.mediator = game.getMediator();
     }
     @Override
     public void play() {
@@ -53,30 +55,21 @@ public class GameStateInPlay implements GameState {
         }
 
     }
+
     @Override
     public void next(){
-        updateState("In Play","Game Over");
+        mediator.notifyStateChange("In Play","Game Over");
         game.setState(new GameStateGameOver(game));
     }
+
     @Override
     public String toString(){
         return "Game State: In Play";
     }
-    @Override
-    public void updateState(String currentState, String nextState){
-        StateChange event = new StateChange(currentState,nextState);
-        game.notifyObservers(StateObserver.class, StateObserver -> StateObserver.onEvent(event));
-    }
-
-    @Override
-    public void displayState(String state) {
-        ViewState event = new ViewState(state);
-        game.notifyObservers(StateObserver.class, StateObserver -> StateObserver.onEvent(event));
-    }
 
     @Override
     public void show() {
-        displayState("In Play");
+        mediator.notifyViewState("In Play");
     }
     public void onMove(MoveResult result){
         OnMove event = new OnMove(result);

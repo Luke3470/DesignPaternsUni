@@ -4,6 +4,8 @@ import uk.ac.mmu.game.applicationcode.domain.board.Board;
 import uk.ac.mmu.game.applicationcode.domain.dice.Dice;
 import uk.ac.mmu.game.applicationcode.domain.dice.Types.RollValue;
 import uk.ac.mmu.game.applicationcode.domain.factories.AssetFactory;
+import uk.ac.mmu.game.applicationcode.domain.mediator.GameStateMediator;
+import uk.ac.mmu.game.applicationcode.domain.mediator.GameStateMediatorConcrete;
 import uk.ac.mmu.game.applicationcode.domain.observers.BaseObserver;
 import uk.ac.mmu.game.applicationcode.domain.observers.PlayObserver;
 import uk.ac.mmu.game.applicationcode.domain.player.PlayerIterable;
@@ -34,6 +36,7 @@ public class Game {
     private final List<BaseObserver> observers = new ArrayList<>();
     private final AssetFactory assets;
     private final List<RollValue> rolls = new ArrayList<>();
+    private final GameStateMediator mediator;
 
     public Game(Dice dice, AssetFactory assetFactory, HitCondition hitCondition, WinCondition winCondition) {
         this.dice = dice;
@@ -43,6 +46,7 @@ public class Game {
         this.hitCondition = hitCondition;
         this.winCondition = winCondition;
         this.playersList.setGame(this);
+        this.mediator = new GameStateMediatorConcrete(this);
         addDefaultObservers();
         initialize();
     }
@@ -65,6 +69,11 @@ public class Game {
     public void setState(GameState state) {
         this.gameState = state;
     }
+
+    public GameStateMediator getMediator() {
+        return mediator;
+    }
+
 
     public void addRoll(RollValue roll) {
         rolls.add(roll);
