@@ -15,7 +15,7 @@ public class HistoricGameConfig {
     @Bean
     @Scope("prototype")
     public RequiredHistoricGame playHistoricGame1() throws IOException {
-        return new PlayHistoricRequired("e41ec17f-659b-4ea9-8ebc-73f3b7fa7e11");
+        return new PlayHistoricRequired("0ae3a243-e6e2-4b82-8b47-7cd57a4ee046");
     }
 
 }
