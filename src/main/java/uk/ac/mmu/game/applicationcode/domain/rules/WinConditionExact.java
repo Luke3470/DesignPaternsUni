@@ -10,25 +10,27 @@ import uk.ac.mmu.game.applicationcode.domain.rules.Outcomes.WinOutcome;
 
 
 public class WinConditionExact implements WinCondition {
-    @Override
-    public MoveOutcome checkWin(Board board, MoveResult move) {
-        Player player = move.player;
 
-        int tailPos = board.findPlayerOnInnerBoards(player);
-        int tailEnd = board.tailLength() - 1;
+  @Override
+  public MoveOutcome checkWin(Board board, MoveResult move) {
+    Player player = move.player;
 
-        if (tailPos == -1 || tailPos < tailEnd) {
-            return new NormalOutcome();
-        }
+    int tailPos = board.findPlayerOnInnerBoards(player);
+    int tailEnd = board.tailLength() - 1;
 
-        if (tailPos == tailEnd && board.getLastRemainingRoll() == 0) {
-            return new WinOutcome();
-        }
-
-        return new OverShootOutcome();
+    if (tailPos == -1 || tailPos < tailEnd) {
+      return new NormalOutcome();
     }
-    @Override
-    public String toString(){
-        return "WinConditionExact";
+
+    if (tailPos == tailEnd && board.getLastRemainingRoll() == 0) {
+      return new WinOutcome();
     }
+
+    return new OverShootOutcome();
+  }
+
+  @Override
+  public String toString() {
+    return "WinConditionExact";
+  }
 }

@@ -7,31 +7,34 @@ import uk.ac.mmu.game.applicationcode.domain.rules.WinCondition;
 
 public class Request {
 
-    private final Dice dice;
-    private final AssetFactory assets;
-    private final HitCondition hitCondition;
-    private final WinCondition winCondition;
+  private final Dice dice;
+  private final AssetFactory assets;
+  private final HitCondition hitCondition;
+  private final WinCondition winCondition;
 
-    public Request(Dice dice, AssetFactory assets, HitCondition hitCondition, WinCondition winCondition) {
-        // Should add Validation but Non is required Just and Example of how it should look
+  public Request(Dice dice, AssetFactory assets, HitCondition hitCondition,
+      WinCondition winCondition) {
+    // Should add Validation but Non is required Just and Example of how it should look
 
-        this.dice = dice;
-        this.assets = assets;
-        this.hitCondition = hitCondition;
-        this.winCondition = winCondition;
-    }
-    public Dice getDice() {
-        return dice;
-    }
-    public HitCondition getHitCondition() {
-        return hitCondition;
-    }
+    this.dice = dice;
+    this.assets = assets;
+    this.hitCondition = hitCondition;
+    this.winCondition = winCondition;
+  }
 
-    public AssetFactory getAssetFactory() {
-        return assets;
-    }
+  public Dice getDice() {
+    return dice;
+  }
 
-    public WinCondition getWinCondition() {
-        return winCondition;
-    }
+  public HitCondition getHitCondition() {
+    return hitCondition;
+  }
+
+  public AssetFactory getAssetFactory() {
+    return assets;
+  }
+
+  public WinCondition getWinCondition() {
+    return winCondition;
+  }
 }

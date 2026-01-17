@@ -6,13 +6,13 @@ import uk.ac.mmu.game.applicationcode.domain.state.GameStateInPlay;
 
 public class WinOutcome extends MoveOutcome {
 
-    public WinOutcome() {
-        this.endsGame = true;
-    }
+  public WinOutcome() {
+    this.endsGame = true;
+  }
 
-    @Override
-    public void apply(GameStateInPlay ctx, MoveResult result) {
-        ctx.onMove(result);
-        ctx.onWin(result.player, ctx.turn, ctx.totalTurns);
-    }
+  @Override
+  public void apply(GameStateInPlay ctx, MoveResult result) {
+    ctx.onMove(result);
+    ctx.onWin(result.player, ctx.turn, ctx.totalTurns);
+  }
 }

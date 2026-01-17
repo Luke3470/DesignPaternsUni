@@ -5,30 +5,31 @@ import uk.ac.mmu.game.applicationcode.domain.Game;
 
 
 public class GameStateReady implements GameState {
-    private Game game;
 
-    public GameStateReady(Game game) {
-        this.game = game;
-    }
+  private final Game game;
 
-    @Override
-    public void play() {
-        this.next();
-    }
+  public GameStateReady(Game game) {
+    this.game = game;
+  }
 
-    @Override
-    public void next(){
-        game.getMediator().notifyStateChange("Ready","Inplay");
-        game.setState(new GameStateInPlay(game));
-    }
+  @Override
+  public void play() {
+    this.next();
+  }
 
-    @Override
-    public String toString(){
-        return "Game State: Game Ready";
-    }
+  @Override
+  public void next() {
+    game.getMediator().notifyStateChange("Ready", "Inplay");
+    game.setState(new GameStateInPlay(game));
+  }
 
-    @Override
-    public void show() {
-        game.getMediator().notifyViewState("Game State: Game Ready");
-    }
+  @Override
+  public String toString() {
+    return "Game State: Game Ready";
+  }
+
+  @Override
+  public void show() {
+    game.getMediator().notifyViewState("Game State: Game Ready");
+  }
 }

@@ -6,14 +6,14 @@ import uk.ac.mmu.game.applicationcode.domain.state.GameStateInPlay;
 
 public class OverShootOutcome extends MoveOutcome {
 
-    public OverShootOutcome() {
-        this.endsTurn = true;
-    }
+  public OverShootOutcome() {
+    this.endsTurn = true;
+  }
 
-    @Override
-    public void apply(GameStateInPlay ctx, MoveResult result) {
-        ctx.history.pop().undo();
-        ctx.onOvershoot(result.player);
-        ctx.onRemain(result.player,result);
-    }
+  @Override
+  public void apply(GameStateInPlay ctx, MoveResult result) {
+    ctx.history.pop().undo();
+    ctx.onOvershoot(result.player);
+    ctx.onRemain(result.player, result);
+  }
 }

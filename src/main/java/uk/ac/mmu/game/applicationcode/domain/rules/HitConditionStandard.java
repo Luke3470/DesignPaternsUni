@@ -8,25 +8,27 @@ import uk.ac.mmu.game.applicationcode.domain.rules.Outcomes.HitNotifyOnlyOutcome
 import uk.ac.mmu.game.applicationcode.domain.rules.Outcomes.MoveOutcome;
 
 public class HitConditionStandard implements HitCondition {
-    @Override
-    public MoveOutcome checkHit(Board board, MoveResult move ) {
-        Player player = move.player;
-        String pos = move.to;
 
-        String occupantsStr = board.posContains(pos, player);
+  @Override
+  public MoveOutcome checkHit(Board board, MoveResult move) {
+    Player player = move.player;
+    String pos = move.to;
 
-        if (occupantsStr == null || occupantsStr.isEmpty()) {
-            return null;
-        }
+    String occupantsStr = board.posContains(pos, player);
 
-        if (occupantsStr.equals(player.getName())) {
-            return null;
-        }
-
-        return new HitNotifyOnlyOutcome(occupantsStr);
+    if (occupantsStr == null || occupantsStr.isEmpty()) {
+      return null;
     }
-    @Override
-    public String toString(){
-        return "HitConditionStandard";
+
+    if (occupantsStr.equals(player.getName())) {
+      return null;
     }
+
+    return new HitNotifyOnlyOutcome(occupantsStr);
+  }
+
+  @Override
+  public String toString() {
+    return "HitConditionStandard";
+  }
 }

@@ -5,8 +5,8 @@ import uk.ac.mmu.game.applicationcode.domain.state.GameStateInPlay;
 
 public class NormalOutcome extends MoveOutcome {
 
-    @Override
-    public void apply(GameStateInPlay ctx, MoveResult result) {
-        ctx.onMove(result);
-    }
+  @Override
+  public void apply(GameStateInPlay ctx, MoveResult result) {
+    ctx.onMove(result);
+  }
 }

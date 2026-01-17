@@ -21,46 +21,47 @@ import uk.ac.mmu.game.applicationcode.usecase.play.ProvidedPlayGame;
 @Configuration
 public class Game5Config {
 
-    @PostConstruct
-    public void init() {
-        System.out.println("Loaded Game5Config");
-    }
+  @PostConstruct
+  public void init() {
+    System.out.println("Loaded Game5Config");
+  }
 
-    @Bean
-    @Qualifier("diceGame5")
-    @Scope("prototype")
-    public RequiredDice diceGame5() {
-        return () -> new NonRandomDice(new int[]{6,6,6,6,3,4,3,4});
-    }
+  @Bean
+  @Qualifier("diceGame5")
+  @Scope("prototype")
+  public RequiredDice diceGame5() {
+    return () -> new NonRandomDice(new int[]{6, 6, 6, 6, 3, 4, 3, 4});
+  }
 
-    @Bean
-    @Qualifier("assetFactoryGame5")
-    @Scope("prototype")
-    public RequiredAssetFactory assetFactoryGame5() {
-        return TwoPlayerAssets::new;
-    }
+  @Bean
+  @Qualifier("assetFactoryGame5")
+  @Scope("prototype")
+  public RequiredAssetFactory assetFactoryGame5() {
+    return TwoPlayerAssets::new;
+  }
 
-    @Bean
-    @Qualifier("hitConditionGame5")
-    @Scope("prototype")
-    public RequiredHitCondition hitConditionGame5() {
-        return HitConditionStandard::new;
-    }
+  @Bean
+  @Qualifier("hitConditionGame5")
+  @Scope("prototype")
+  public RequiredHitCondition hitConditionGame5() {
+    return HitConditionStandard::new;
+  }
 
-    @Bean
-    @Qualifier("winConditionGame5")
-    @Scope("prototype")
-    public RequiredWinCondition winConditionGame5() {
-        return WinConditionStandard::new;
-    }
-    @Bean
-    @Scope("prototype")
-    public ProvidedPlayGame playUseCaseGame5(
-            RequiredDice diceGame5,
-            RequiredAssetFactory assetFactoryGame5,
-            RequiredHitCondition hitConditionGame5,
-            RequiredWinCondition winConditionGame5
-    ) {
-        return new PlayGameUseCase(diceGame5, assetFactoryGame5, hitConditionGame5, winConditionGame5);
-    }
+  @Bean
+  @Qualifier("winConditionGame5")
+  @Scope("prototype")
+  public RequiredWinCondition winConditionGame5() {
+    return WinConditionStandard::new;
+  }
+
+  @Bean
+  @Scope("prototype")
+  public ProvidedPlayGame playUseCaseGame5(
+      RequiredDice diceGame5,
+      RequiredAssetFactory assetFactoryGame5,
+      RequiredHitCondition hitConditionGame5,
+      RequiredWinCondition winConditionGame5
+  ) {
+    return new PlayGameUseCase(diceGame5, assetFactoryGame5, hitConditionGame5, winConditionGame5);
+  }
 }

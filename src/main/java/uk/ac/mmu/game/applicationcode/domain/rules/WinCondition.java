@@ -5,5 +5,6 @@ import uk.ac.mmu.game.applicationcode.domain.entities.MoveResult;
 import uk.ac.mmu.game.applicationcode.domain.rules.Outcomes.MoveOutcome;
 
 public interface WinCondition {
-    MoveOutcome checkWin(Board board, MoveResult move);
+
+  MoveOutcome checkWin(Board board, MoveResult move);
 }

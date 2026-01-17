@@ -1,32 +1,32 @@
 package uk.ac.mmu.game.infrastructure.driven.file;
 
+import java.io.FileWriter;
+import java.io.IOException;
 import uk.ac.mmu.game.applicationcode.domain.dice.Types.RollValue;
 import uk.ac.mmu.game.applicationcode.domain.observers.FileObserver;
 import uk.ac.mmu.game.infrastructure.driven.file.payload.CreateFile;
 
-import java.io.FileWriter;
-import java.io.IOException;
-
 public class TextFileObserver implements FileObserver {
-    private final String savePath = (System.getProperty("user.dir") +"\\Games\\");
 
-    @Override
-    public void onEvent(CreateFile payload) {
-        try (FileWriter writer = new FileWriter(savePath+java.util.UUID.randomUUID())) {
+  private final String savePath = (System.getProperty("user.dir") + "\\Games\\");
 
-            writer.write("HitCondition: " + payload.hitCondition.toString() + "\n");
+  @Override
+  public void onEvent(CreateFile payload) {
+    try (FileWriter writer = new FileWriter(savePath + java.util.UUID.randomUUID())) {
 
-            writer.write("WinCondition: " + payload.winCondition.toString() + "\n");
+      writer.write("HitCondition: " + payload.hitCondition.toString() + "\n");
 
-            writer.write("Asset: "+ payload.assets.toString() + "\n");
-            for (RollValue roll : payload.rolls) {
-                writer.write(roll.toString() + "\n");
-            }
+      writer.write("WinCondition: " + payload.winCondition.toString() + "\n");
 
-            System.out.println("Saved game to " + savePath);
+      writer.write("Asset: " + payload.assets.toString() + "\n");
+      for (RollValue roll : payload.rolls) {
+        writer.write(roll.toString() + "\n");
+      }
 
-        } catch (IOException e) {
-            System.err.println("Failed to save game: " + e.getMessage());
-        }
+      System.out.println("Saved game to " + savePath);
+
+    } catch (IOException e) {
+      System.err.println("Failed to save game: " + e.getMessage());
     }
+  }
 }

@@ -1,40 +1,42 @@
 package uk.ac.mmu.game.applicationcode.domain.player;
 
 
+import java.util.Iterator;
 import uk.ac.mmu.game.applicationcode.domain.Game;
 import uk.ac.mmu.game.applicationcode.domain.entities.Player;
 import uk.ac.mmu.game.applicationcode.domain.state.GameStateGameOver;
 
-import java.util.Iterator;
-
 public class PlayerIterable implements Iterable<Player> {
-    private final PlayerSelector playerSelector;
-    private Game exitCondition= null;
 
-    public PlayerIterable(PlayerSelector playerSelector) {
-        this.playerSelector = playerSelector;
-    }
+  private final PlayerSelector playerSelector;
+  private Game exitCondition = null;
 
-    public void setGame(Game game){
-        this.exitCondition = game;
+  public PlayerIterable(PlayerSelector playerSelector) {
+    this.playerSelector = playerSelector;
+  }
+
+  public void setGame(Game game) {
+    this.exitCondition = game;
+  }
+
+  @Override
+  public Iterator<Player> iterator() {
+    return new PlayerIterator();
+  }
+
+  private class PlayerIterator implements Iterator<Player> {
+
+    @Override
+    public boolean hasNext() {
+      if (exitCondition == null) {
+        throw new IllegalStateException("Must Provide Iterator Exit Condition: GameState");
+      }
+      return !(exitCondition.getState() instanceof GameStateGameOver);
     }
 
     @Override
-    public Iterator<Player> iterator(){
-        return new PlayerIterator();
+    public Player next() {
+      return playerSelector.next();
     }
-    private class PlayerIterator implements Iterator<Player> {
-        @Override
-        public boolean hasNext() {
-            if (exitCondition == null){
-                throw new IllegalStateException("Must Provide Iterator Exit Condition: GameState");
-            }
-            return !(exitCondition.getState() instanceof GameStateGameOver);
-        }
-
-        @Override
-        public Player next() {
-            return playerSelector.next();
-        }
-    }
+  }
 }

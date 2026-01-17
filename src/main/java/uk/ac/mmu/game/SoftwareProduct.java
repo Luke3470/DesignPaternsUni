@@ -6,9 +6,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class SoftwareProduct {
 
-    public static void main(String[] args) {
+  public static void main(String[] args) {
 
-        SpringApplication.run(SoftwareProduct.class, args);
-    }
+    SpringApplication.run(SoftwareProduct.class, args);
+  }
 
 }

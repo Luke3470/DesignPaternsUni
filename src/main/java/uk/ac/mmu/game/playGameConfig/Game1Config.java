@@ -20,42 +20,43 @@ import uk.ac.mmu.game.applicationcode.usecase.play.ProvidedPlayGame;
 @Configuration
 public class Game1Config {
 
-    @PostConstruct
-    public void init() {
-        System.out.println("Loaded Game1Config");
-    }
+  @PostConstruct
+  public void init() {
+    System.out.println("Loaded Game1Config");
+  }
 
-    @Bean
-    @Scope("prototype")
-    public RequiredDice diceGame1() {
-        return () -> new NonRandomDice(new int[]{12, 12, 7, 8});
-    }
+  @Bean
+  @Scope("prototype")
+  public RequiredDice diceGame1() {
+    return () -> new NonRandomDice(new int[]{12, 12, 7, 8});
+  }
 
-    @Bean
-    @Scope("prototype")
-    public RequiredAssetFactory assetFactoryGame1() {
-        return TwoPlayerAssets::new;
-    }
+  @Bean
+  @Scope("prototype")
+  public RequiredAssetFactory assetFactoryGame1() {
+    return TwoPlayerAssets::new;
+  }
 
-    @Bean
-    @Scope("prototype")
-    public RequiredHitCondition hitConditionGame1() {
-        return HitConditionStandard::new;
-    }
+  @Bean
+  @Scope("prototype")
+  public RequiredHitCondition hitConditionGame1() {
+    return HitConditionStandard::new;
+  }
 
-    @Bean
-    @Scope("prototype")
-    public RequiredWinCondition winConditionGame1() {
-        return WinConditionStandard::new;
-    }
-    @Bean
-    @Scope("prototype")
-    public ProvidedPlayGame playUseCaseGame1(
-            RequiredDice diceGame1,
-            RequiredAssetFactory assetFactoryGame1,
-            RequiredHitCondition hitConditionGame1,
-            RequiredWinCondition winConditionGame1
-    ) {
-        return new PlayGameUseCase(diceGame1, assetFactoryGame1, hitConditionGame1, winConditionGame1);
-    }
+  @Bean
+  @Scope("prototype")
+  public RequiredWinCondition winConditionGame1() {
+    return WinConditionStandard::new;
+  }
+
+  @Bean
+  @Scope("prototype")
+  public ProvidedPlayGame playUseCaseGame1(
+      RequiredDice diceGame1,
+      RequiredAssetFactory assetFactoryGame1,
+      RequiredHitCondition hitConditionGame1,
+      RequiredWinCondition winConditionGame1
+  ) {
+    return new PlayGameUseCase(diceGame1, assetFactoryGame1, hitConditionGame1, winConditionGame1);
+  }
 }

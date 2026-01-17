@@ -8,27 +8,27 @@ import uk.ac.mmu.game.applicationcode.domain.rules.Outcomes.HitUndoOutcome;
 import uk.ac.mmu.game.applicationcode.domain.rules.Outcomes.MoveOutcome;
 
 public class HitConditionOnePerSpace implements HitCondition {
-    @Override
-    public MoveOutcome checkHit(Board board, MoveResult move) {
-        Player player = move.player;
-        String pos = move.to;
 
-        String occupantsStr = board.posContains(pos,move.player);
+  @Override
+  public MoveOutcome checkHit(Board board, MoveResult move) {
+    Player player = move.player;
+    String pos = move.to;
 
-        if (occupantsStr == null || occupantsStr.isEmpty()) {
-            return null;
-        }
+    String occupantsStr = board.posContains(pos, move.player);
 
-
-        if (occupantsStr.equals(player.getName())) {
-            return null;
-        }
-
-
-        return new HitUndoOutcome(occupantsStr);
+    if (occupantsStr == null || occupantsStr.isEmpty()) {
+      return null;
     }
-    @Override
-    public String toString(){
-        return "HitConditionOnePerSpace";
+
+    if (occupantsStr.equals(player.getName())) {
+      return null;
     }
+
+    return new HitUndoOutcome(occupantsStr);
+  }
+
+  @Override
+  public String toString() {
+    return "HitConditionOnePerSpace";
+  }
 }

@@ -6,8 +6,12 @@ import uk.ac.mmu.game.applicationcode.domain.rules.HitCondition;
 import uk.ac.mmu.game.applicationcode.domain.rules.WinCondition;
 
 public interface RequiredHistoricGame {
-    Dice getDice();
-    AssetFactory getAssetFactory();
-    HitCondition getHitCondition();
-    WinCondition getWinCondition();
+
+  Dice getDice();
+
+  AssetFactory getAssetFactory();
+
+  HitCondition getHitCondition();
+
+  WinCondition getWinCondition();
 }
