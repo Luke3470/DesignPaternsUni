@@ -50,7 +50,11 @@ classDiagram
         +toString() String 
     }
     
-    DiceDecorator <|-- Dice
+    Dice <|-- DiceDecorator
+    Dice <|-- NonRandomDice
+    Dice <|-- SingleDice
+    DiceFactory <|-- SingleDiceFactory
+    DiceFactory <|-- DoubleDiceFactory
 ```
 ---------------
 Hit variation
