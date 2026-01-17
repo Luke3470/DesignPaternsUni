@@ -9,10 +9,10 @@ import uk.ac.mmu.game.applicationcode.domain.rules.WinCondition;
 
 public class CreateFile {
 
-  public HitCondition hitCondition;
-  public WinCondition winCondition;
-  public List<RollValue> rolls;
-  public AssetFactory assets;
+  final public HitCondition hitCondition;
+  final public WinCondition winCondition;
+  final public List<RollValue> rolls;
+  final public AssetFactory assets;
 
   public CreateFile(HitCondition hitCondition, WinCondition winCondition, List<RollValue> rolls,
       AssetFactory assets) {

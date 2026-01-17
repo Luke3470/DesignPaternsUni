@@ -15,8 +15,7 @@ class FourPlayerBoardFactory implements BoardFactory {
   @Override
   public Board create() {
     Player[] p = {PLAYER1, PLAYER2, PLAYER3, PLAYER4};
-    Board b = new StandardBoard(36, 6, p);
-    return b;
+    return new StandardBoard(36, 6, p);
   }
 
 }

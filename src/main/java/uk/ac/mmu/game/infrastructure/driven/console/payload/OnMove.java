@@ -4,7 +4,7 @@ import uk.ac.mmu.game.applicationcode.domain.entities.MoveResult;
 
 public class OnMove {
 
-  public MoveResult result;
+  final public MoveResult result;
 
   public OnMove(MoveResult result) {
     this.result = result;

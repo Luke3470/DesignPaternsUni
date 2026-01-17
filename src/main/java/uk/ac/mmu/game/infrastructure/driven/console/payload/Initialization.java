@@ -8,10 +8,10 @@ import uk.ac.mmu.game.applicationcode.domain.rules.WinCondition;
 
 public class Initialization {
 
-  public HitCondition hitCondition;
-  public WinCondition winCondition;
-  public AssetFactory assetFactory;
-  public Dice dice;
+  final public HitCondition hitCondition;
+  final public WinCondition winCondition;
+  final public AssetFactory assetFactory;
+  final public Dice dice;
 
   public Initialization(HitCondition hitCondition, WinCondition winCondition, AssetFactory assets,
       Dice dice) {

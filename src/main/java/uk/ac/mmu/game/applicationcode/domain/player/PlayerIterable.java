@@ -2,6 +2,7 @@ package uk.ac.mmu.game.applicationcode.domain.player;
 
 
 import java.util.Iterator;
+import org.jspecify.annotations.NonNull;
 import uk.ac.mmu.game.applicationcode.domain.Game;
 import uk.ac.mmu.game.applicationcode.domain.entities.Player;
 import uk.ac.mmu.game.applicationcode.domain.state.GameStateGameOver;
@@ -20,7 +21,7 @@ public class PlayerIterable implements Iterable<Player> {
   }
 
   @Override
-  public Iterator<Player> iterator() {
+  public @NonNull Iterator<Player> iterator() {
     return new PlayerIterator();
   }
 

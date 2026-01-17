@@ -4,9 +4,9 @@ import uk.ac.mmu.game.applicationcode.domain.entities.Player;
 
 public class OnWin {
 
-  public Player player;
-  public int turn;
-  public int totalTurns;
+  final public Player player;
+  final public int turn;
+  final public int totalTurns;
 
   public OnWin(Player player, int turn, int totalTurns) {
     this.player = player;

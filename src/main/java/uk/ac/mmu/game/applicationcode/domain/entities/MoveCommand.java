@@ -10,7 +10,6 @@ public class MoveCommand implements Command {
   private final int roll;
 
   private String startPos;
-  private String endPos;
 
   public MoveCommand(Player player, Board board, int roll) {
     this.player = player;
@@ -22,7 +21,7 @@ public class MoveCommand implements Command {
   public MoveResult execute() {
     startPos = board.getPos(player);
     board.move(player, roll);
-    endPos = board.getPos(player);
+    String endPos = board.getPos(player);
     String fromReadable = formatPosition(startPos, true);
     String toReadable = formatPosition(endPos, false);
 

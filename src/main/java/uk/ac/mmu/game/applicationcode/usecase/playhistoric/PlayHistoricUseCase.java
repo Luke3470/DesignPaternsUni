@@ -23,13 +23,17 @@ public class PlayHistoricUseCase implements ProvidedPlayHistoric {
 
   @Override
   public Response play() {
-    PlayableGame game = new Game(
-        dice,
-        assets,
-        hitCondition,
-        winCondition
-    );
-    game.play();
-    return new Response(true);
+    try {
+      PlayableGame game = new Game(
+          dice,
+          assets,
+          hitCondition,
+          winCondition
+      );
+      game.play();
+      return new Response(true);
+    }catch (Exception e) {
+      return new Response(false);
+    }
   }
 }

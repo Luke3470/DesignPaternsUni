@@ -4,9 +4,9 @@ import uk.ac.mmu.game.applicationcode.domain.entities.Player;
 
 public class OnRoll {
 
-  public Player player;
-  public int roll;
-  public int turn;
+  final public Player player;
+  final public int roll;
+  final public int turn;
 
   public OnRoll(Player player, int roll, int turn) {
     this.player = player;

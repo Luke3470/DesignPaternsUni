@@ -24,10 +24,10 @@ public class PlayHistoricRequired implements RequiredHistoricGame {
       throw new IOException("No such game");
     }
     GameConfigFactory factory = new GameConfigFactory();
-    this.dice = factory.CreateDice(config.getNumbers());
-    this.assetFactory = factory.createAssets(config.getAssetName());
-    this.hitCondition = factory.createHitCondition(config.getHitConditionName());
-    this.winCondition = factory.createWinCondition(config.getWinConditionName());
+    this.dice = factory.CreateDice(config.numbers());
+    this.assetFactory = factory.createAssets(config.assetName());
+    this.hitCondition = factory.createHitCondition(config.hitConditionName());
+    this.winCondition = factory.createWinCondition(config.winConditionName());
   }
 
   @Override

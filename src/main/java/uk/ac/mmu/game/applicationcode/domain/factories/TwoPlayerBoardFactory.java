@@ -14,7 +14,6 @@ class TwoPlayerBoardFactory implements BoardFactory {
   @Override
   public Board create() {
     Player[] players = {PLAYER1, PLAYER2};
-    Board b = new StandardBoard(18, 3, players);
-    return b;
+    return new StandardBoard(18, 3, players);
   }
 }
