@@ -56,8 +56,32 @@ classDiagram
     DiceFactory <|-- SingleDiceFactory
     DiceFactory <|-- DoubleDiceFactory
 ```
+Dice Variations talk about value object and null pattern
+
 ---------------
-Hit variation
+# Hit Variation
+```mermaid
+classDiagram
+
+    class HitCondition {
+        <<interface>>
+        ~checkHit(Board, MoveResult) MoveOutcome
+    }
+    
+    class HitConditionOnePerSpace {
+        +checkHit(Board, MoveResult) MoveOutcome
+        +toString() String
+    }
+    
+    class HitConditionStandard {
+        +checkHit(Board, MoveResult) MoveOutcome
+        +toString() String
+    }
+    
+    HitCondition <|-- HitConditionStandard
+    HitCondition <|-- HitConditionOnePerSpace
+```
+---------------
 Win variation
 Player
 State Machine
