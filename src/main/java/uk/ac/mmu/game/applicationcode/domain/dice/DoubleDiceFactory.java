@@ -1,7 +1,7 @@
 package uk.ac.mmu.game.applicationcode.domain.dice;
 
 
-public class DoubleDiceFactory implements DiceFactory {
+class DoubleDiceFactory implements DiceFactory {
     private final DiceFactory factory = new SingleDiceFactory();
 
     @Override

@@ -1,7 +1,5 @@
 package uk.ac.mmu.game.applicationcode.domain.entities;
 
-
-
 public class MoveResult {
     public final Player player;
     public final String from;

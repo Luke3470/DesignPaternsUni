@@ -7,7 +7,7 @@ import uk.ac.mmu.game.infrastructure.file.payload.CreateFile;
 import java.io.FileWriter;
 import java.io.IOException;
 
-public class TextFileObserver implements FileObserver {
+class TextFileObserver implements FileObserver {
     private final String savePath;
 
     public TextFileObserver(String savePath) {

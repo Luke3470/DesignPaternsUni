@@ -9,7 +9,7 @@ import uk.ac.mmu.game.applicationcode.domain.rules.*;
 
 import java.util.List;
 
-public class GameConfigFactory {
+class GameConfigFactory {
 
     public HitCondition createHitCondition(String name) {
         return switch (name) {

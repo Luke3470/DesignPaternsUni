@@ -7,7 +7,7 @@ import uk.ac.mmu.game.infrastructure.console.payload.EndState;
 import uk.ac.mmu.game.infrastructure.console.payload.ViewState;
 import uk.ac.mmu.game.infrastructure.file.payload.CreateFile;
 
-public class GameStateGameOver implements GameState {
+class GameStateGameOver implements GameState {
     private Game game;
 
     GameStateGameOver(Game game){

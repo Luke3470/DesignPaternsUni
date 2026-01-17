@@ -6,7 +6,7 @@ import uk.ac.mmu.game.applicationcode.domain.observers.StateObserver;
 import uk.ac.mmu.game.infrastructure.console.payload.StateChange;
 import uk.ac.mmu.game.infrastructure.console.payload.ViewState;
 
-public class GameStateReady implements GameState {
+class GameStateReady implements GameState {
     private Game game;
 
     public GameStateReady(Game game) {

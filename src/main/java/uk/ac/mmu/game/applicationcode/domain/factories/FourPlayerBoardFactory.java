@@ -7,7 +7,7 @@ import uk.ac.mmu.game.applicationcode.domain.entities.Player;
 
 import static uk.ac.mmu.game.applicationcode.domain.entities.Player.*;
 
-public class FourPlayerBoardFactory implements BoardFactory {
+class FourPlayerBoardFactory implements BoardFactory {
     @Override
     public Board create() {
         Player[] p = {PLAYER1,PLAYER2,PLAYER3,PLAYER4};

@@ -9,7 +9,7 @@ import static uk.ac.mmu.game.applicationcode.domain.entities.Player.PLAYER1;
 import static uk.ac.mmu.game.applicationcode.domain.entities.Player.PLAYER2;
 
 
-public class TwoPlayerBoardFactory implements BoardFactory {
+class TwoPlayerBoardFactory implements BoardFactory {
     @Override
     public Board create() {
         Player[] players = {PLAYER1,PLAYER2};

@@ -3,7 +3,7 @@ package uk.ac.mmu.game.applicationcode.domain.dice;
 
 import java.util.Random;
 
-public class SingleDice implements Dice {
+class SingleDice implements Dice {
     private final Random rand = new Random();
     @Override
     public int roll() {

@@ -4,7 +4,7 @@ import uk.ac.mmu.game.applicationcode.domain.entities.MoveResult;
 import uk.ac.mmu.game.applicationcode.domain.state.GameStateInPlay;
 
 
-public class OverShootOutcome extends MoveOutcome {
+class OverShootOutcome extends MoveOutcome {
 
     public OverShootOutcome() {
         this.endsTurn = true;
