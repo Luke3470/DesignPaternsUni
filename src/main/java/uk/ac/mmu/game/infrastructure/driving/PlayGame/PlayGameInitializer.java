@@ -5,8 +5,6 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Component;
 import uk.ac.mmu.game.applicationcode.usecase.play.Provided;
 
-import java.util.List;
-
 @Component
 public class PlayGameInitializer implements org.springframework.boot.CommandLineRunner, org.springframework.core.Ordered {
 
