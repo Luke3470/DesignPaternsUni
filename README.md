@@ -51,7 +51,6 @@ classDiagram
     }
     
     DiceDecorator <|-- Dice
-    DiceFactory <|.. DiceFactoryImpl
 '''
 ---------------
 Hit variation
