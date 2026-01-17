@@ -9,4 +9,5 @@ public interface PlayObserver extends BaseObserver {
     void onEvent(OnWin win);
     void onEvent(OnOverShoot overshoot);
     void onEvent(Initialization init);
+    void onEvent(OnRemain onRemain);
 }

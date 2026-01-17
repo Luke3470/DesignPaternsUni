@@ -97,12 +97,17 @@ public class GameStateInPlay implements GameState {
         game.notifyObservers(PlayObserver.class, PlayObserver -> PlayObserver.onEvent(event));
     }
 
+    public void onRemain(Player player,MoveResult result) {
+        OnRemain event = new OnRemain(player.getName(), result.from);
+        game.notifyObservers(PlayObserver.class, PlayObserver -> PlayObserver.onEvent(event));
+    }
+
     private void incrementTurn(Player player) {
         totalTurns++;
         if (player.getIndex() == 0) turn++;
     }
     private void updateRoll(Player player, int roll){
-        OnRoll event = new OnRoll(player ,roll);
+        OnRoll event = new OnRoll(player ,roll , this.turn);
         game.notifyObservers(PlayObserver.class, PlayObserver -> PlayObserver.onEvent(event));
     }
     private MoveResult rollAndMove(Player player, Dice die, Board board) {

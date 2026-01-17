@@ -6,16 +6,15 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Scope;
 import org.springframework.core.annotation.Order;
 import uk.ac.mmu.game.applicationcode.domain.dice.NonRandomDice;
-import uk.ac.mmu.game.applicationcode.domain.factories.TwoPlayerAssets;
-import uk.ac.mmu.game.applicationcode.domain.rules.HitConditionStandard;
-import uk.ac.mmu.game.applicationcode.domain.rules.WinConditionStandard;
+import uk.ac.mmu.game.applicationcode.domain.factories.FourPlayerAssets;
+import uk.ac.mmu.game.applicationcode.domain.rules.HitConditionOnePerSpace;
+import uk.ac.mmu.game.applicationcode.domain.rules.WinConditionExact;
 import uk.ac.mmu.game.applicationcode.usecase.RequiredAssetFactory;
 import uk.ac.mmu.game.applicationcode.usecase.RequiredDice;
 import uk.ac.mmu.game.applicationcode.usecase.RequiredHitCondition;
 import uk.ac.mmu.game.applicationcode.usecase.RequiredWinCondition;
 import uk.ac.mmu.game.applicationcode.usecase.play.PlayGameUseCase;
 import uk.ac.mmu.game.applicationcode.usecase.play.Provided;
-
 
 @Order(10)
 @Configuration
@@ -29,25 +28,25 @@ public class Game10Config {
     @Bean
     @Scope("prototype")
     public RequiredDice diceGame10() {
-        return () -> new NonRandomDice(new int[]{12,12,7,8,12,12});
+        return () -> new NonRandomDice(new int[] {11,11,8,10,10,7,2,4,6,8,4,9,9,10,7,11,10,8,5,7});
     }
 
     @Bean
     @Scope("prototype")
     public RequiredAssetFactory assetFactoryGame10() {
-        return TwoPlayerAssets::new;
+        return FourPlayerAssets::new;
     }
 
     @Bean
     @Scope("prototype")
     public RequiredHitCondition hitConditionGame10() {
-        return HitConditionStandard::new;
+        return HitConditionOnePerSpace::new;
     }
 
     @Bean
     @Scope("prototype")
     public RequiredWinCondition winConditionGame10() {
-        return WinConditionStandard::new;
+        return WinConditionExact::new;
     }
     @Bean
     @Scope("prototype")

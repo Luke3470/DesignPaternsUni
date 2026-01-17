@@ -20,7 +20,7 @@ public class PlayGameInitializer implements org.springframework.boot.CommandLine
 
     @Override
     public void run(String... args){
-        for (int i = 1; i <= 10; i++) {
+        for (int i = 1; i <= 11; i++) {
             System.out.println("=== Starting Game " + i + " ===");
             Provided game = context.getBean("playUseCaseGame" + i, Provided.class);
             game.play();

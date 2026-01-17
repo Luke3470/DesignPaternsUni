@@ -14,5 +14,6 @@ public class HitUndoOutcome extends MoveOutcome {
     public void apply(GameStateInPlay ctx, MoveResult result) {
         ctx.history.pop().undo();
         ctx.onHit(result,playerHit);
+        ctx.onRemain(result.player,result);
     }
 }

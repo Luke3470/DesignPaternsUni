@@ -56,10 +56,10 @@ public class Game5Config {
     @Bean
     @Scope("prototype")
     public Provided playUseCaseGame5(
-            @Qualifier("diceGame5") RequiredDice diceGame5,
-            @Qualifier("assetFactoryGame5") RequiredAssetFactory assetFactoryGame5,
-            @Qualifier("hitConditionGame5") RequiredHitCondition hitConditionGame5,
-            @Qualifier("winConditionGame5") RequiredWinCondition winConditionGame5
+            RequiredDice diceGame5,
+            RequiredAssetFactory assetFactoryGame5,
+            RequiredHitCondition hitConditionGame5,
+            RequiredWinCondition winConditionGame5
     ) {
         return new PlayGameUseCase(diceGame5, assetFactoryGame5, hitConditionGame5, winConditionGame5);
     }

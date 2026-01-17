@@ -1,7 +1,6 @@
 package uk.ac.mmu.game.playGameConfig;
 
 import jakarta.annotation.PostConstruct;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Scope;
@@ -17,46 +16,47 @@ import uk.ac.mmu.game.applicationcode.usecase.RequiredWinCondition;
 import uk.ac.mmu.game.applicationcode.usecase.play.PlayGameUseCase;
 import uk.ac.mmu.game.applicationcode.usecase.play.Provided;
 
-@Order(4)
+
+@Order(11)
 @Configuration
-public class Game4Config {
+public class Game11Config {
 
     @PostConstruct
     public void init() {
-        System.out.println("Loaded Game4Config");
+        System.out.println("Loaded Game11Config");
     }
 
     @Bean
     @Scope("prototype")
-    public RequiredDice diceGame4() {
-        return () -> new NonRandomDice(new int[]{12, 12, 7, 11});
+    public RequiredDice diceGame11() {
+        return () -> new NonRandomDice(new int[]{12,12,7,8,12,12});
     }
 
     @Bean
     @Scope("prototype")
-    public RequiredAssetFactory assetFactoryGame4() {
+    public RequiredAssetFactory assetFactoryGame11() {
         return TwoPlayerAssets::new;
     }
 
     @Bean
     @Scope("prototype")
-    public RequiredHitCondition hitConditionGame4() {
+    public RequiredHitCondition hitConditionGame11() {
         return HitConditionStandard::new;
     }
 
     @Bean
     @Scope("prototype")
-    public RequiredWinCondition winConditionGame4() {
+    public RequiredWinCondition winConditionGame11() {
         return WinConditionStandard::new;
     }
     @Bean
     @Scope("prototype")
-    public Provided playUseCaseGame4(
-            RequiredDice diceGame4,
-            RequiredAssetFactory assetFactoryGame4,
-            RequiredHitCondition hitConditionGame4,
-            RequiredWinCondition winConditionGame4
+    public Provided playUseCaseGame11(
+            RequiredDice diceGame11,
+            RequiredAssetFactory assetFactoryGame11,
+            RequiredHitCondition hitConditionGame11,
+            RequiredWinCondition winConditionGame11
     ) {
-        return new PlayGameUseCase(diceGame4, assetFactoryGame4, hitConditionGame4, winConditionGame4);
+        return new PlayGameUseCase(diceGame11, assetFactoryGame11, hitConditionGame11, winConditionGame11);
     }
 }

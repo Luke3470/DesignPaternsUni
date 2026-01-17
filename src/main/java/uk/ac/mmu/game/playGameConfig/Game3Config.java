@@ -20,35 +20,31 @@ import uk.ac.mmu.game.applicationcode.usecase.play.Provided;
 @Order(3)
 @Configuration
 public class Game3Config {
+
     @PostConstruct
     public void init() {
         System.out.println("Loaded Game3Config");
     }
 
-
     @Bean
-    @Qualifier("diceGame3")
     @Scope("prototype")
     public RequiredDice diceGame3() {
         return () -> new NonRandomDice(new int[]{8, 2, 3, 4, 9});
     }
 
     @Bean
-    @Qualifier("assetFactoryGame3")
     @Scope("prototype")
     public RequiredAssetFactory assetFactoryGame3() {
         return TwoPlayerAssets::new;
     }
 
     @Bean
-    @Qualifier("hitConditionGame3")
     @Scope("prototype")
     public RequiredHitCondition hitConditionGame3() {
         return HitConditionStandard::new;
     }
 
     @Bean
-    @Qualifier("winConditionGame3")
     @Scope("prototype")
     public RequiredWinCondition winConditionGame3() {
         return WinConditionStandard::new;
@@ -56,10 +52,10 @@ public class Game3Config {
     @Bean
     @Scope("prototype")
     public Provided playUseCaseGame3(
-            @Qualifier("diceGame3") RequiredDice diceGame3,
-            @Qualifier("assetFactoryGame3") RequiredAssetFactory assetFactoryGame3,
-            @Qualifier("hitConditionGame3") RequiredHitCondition hitConditionGame3,
-            @Qualifier("winConditionGame3") RequiredWinCondition winConditionGame3
+            RequiredDice diceGame3,
+            RequiredAssetFactory assetFactoryGame3,
+            RequiredHitCondition hitConditionGame3,
+            RequiredWinCondition winConditionGame3
     ) {
         return new PlayGameUseCase(diceGame3, assetFactoryGame3, hitConditionGame3, winConditionGame3);
     }

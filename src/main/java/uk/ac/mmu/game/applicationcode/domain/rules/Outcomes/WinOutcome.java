@@ -12,6 +12,7 @@ public class WinOutcome extends MoveOutcome {
 
     @Override
     public void apply(GameStateInPlay ctx, MoveResult result) {
+        ctx.onMove(result);
         ctx.onWin(result.player, ctx.turn, ctx.totalTurns);
     }
 }

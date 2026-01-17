@@ -27,21 +27,18 @@ public class Game2Config {
     }
 
     @Bean
-    @Qualifier("diceGame2")
     @Scope("prototype")
     public RequiredDice diceGame2() {
         return () -> new NonRandomDice(new int[]{12, 12, 6, 6, 2});
     }
 
     @Bean
-    @Qualifier("assetFactoryGame2")
     @Scope("prototype")
     public RequiredAssetFactory assetFactoryGame2() {
         return TwoPlayerAssets::new;
     }
 
     @Bean
-    @Qualifier("hitConditionGame2")
     @Scope("prototype")
     public RequiredHitCondition hitConditionGame2() {
         return HitConditionStandard::new;
@@ -54,12 +51,11 @@ public class Game2Config {
         return WinConditionStandard::new;
     }
     @Bean
-    @Scope("prototype")
     public Provided playUseCaseGame2(
-            @Qualifier("diceGame2") RequiredDice diceGame2,
-            @Qualifier("assetFactoryGame2") RequiredAssetFactory assetFactoryGame2,
-            @Qualifier("hitConditionGame2") RequiredHitCondition hitConditionGame2,
-            @Qualifier("winConditionGame2") RequiredWinCondition winConditionGame2
+            RequiredDice diceGame2,
+            RequiredAssetFactory assetFactoryGame2,
+            RequiredHitCondition hitConditionGame2,
+            RequiredWinCondition winConditionGame2
     ) {
         return new PlayGameUseCase(diceGame2, assetFactoryGame2, hitConditionGame2, winConditionGame2);
     }

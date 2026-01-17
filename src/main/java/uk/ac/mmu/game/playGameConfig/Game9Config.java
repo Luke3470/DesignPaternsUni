@@ -7,8 +7,8 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.core.annotation.Order;
 import uk.ac.mmu.game.applicationcode.domain.dice.NonRandomDice;
 import uk.ac.mmu.game.applicationcode.domain.factories.FourPlayerAssets;
-import uk.ac.mmu.game.applicationcode.domain.rules.HitConditionOnePerSpace;
-import uk.ac.mmu.game.applicationcode.domain.rules.WinConditionExact;
+import uk.ac.mmu.game.applicationcode.domain.rules.HitConditionStandard;
+import uk.ac.mmu.game.applicationcode.domain.rules.WinConditionStandard;
 import uk.ac.mmu.game.applicationcode.usecase.RequiredAssetFactory;
 import uk.ac.mmu.game.applicationcode.usecase.RequiredDice;
 import uk.ac.mmu.game.applicationcode.usecase.RequiredHitCondition;
@@ -28,7 +28,7 @@ public class Game9Config {
     @Bean
     @Scope("prototype")
     public RequiredDice diceGame9() {
-        return () -> new NonRandomDice(new int[] {11,11,8,10,10,7,2,4,6,8,4,9,9,10,7,11,10,8,5,7});
+        return () -> new NonRandomDice(new int[] {7,3,8,5,7,6,8,7,6,8,2,4,4,8,5,7,8,3,9,9,7,5,7,9});
     }
 
     @Bean
@@ -40,13 +40,13 @@ public class Game9Config {
     @Bean
     @Scope("prototype")
     public RequiredHitCondition hitConditionGame9() {
-        return HitConditionOnePerSpace::new;
+        return HitConditionStandard::new;
     }
 
     @Bean
     @Scope("prototype")
     public RequiredWinCondition winConditionGame9() {
-        return WinConditionExact::new;
+        return WinConditionStandard::new;
     }
     @Bean
     @Scope("prototype")

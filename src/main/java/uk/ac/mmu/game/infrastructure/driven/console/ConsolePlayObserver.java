@@ -6,7 +6,7 @@ import uk.ac.mmu.game.infrastructure.driven.console.payload.*;
 public class ConsolePlayObserver implements PlayObserver {
     @Override
     public void onEvent(OnRoll roll) {
-        System.out.println(roll.player.getTextColour() + roll.player.getName() + " rolls " + roll.roll);
+        System.out.println(roll.player.getTextColour() + roll.player.getName() +" turn "+ roll.turn +" rolls " + roll.roll);
     }
 
     @Override
@@ -31,6 +31,11 @@ public class ConsolePlayObserver implements PlayObserver {
         System.out.println("WinCondition: " + init.winCondition.toString());
         System.out.println("Dice: " + init.dice.toString());
         System.out.println("Players: " + init.assetFactory.toString());
+    }
+
+    @Override
+    public void onEvent(OnRemain onRemain) {
+        System.out.println(onRemain.name + " remains at "+ onRemain.startPos);
     }
 
     @Override
