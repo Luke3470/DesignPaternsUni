@@ -1,4 +1,4 @@
-package uk.ac.mmu.game.infrastructure.driven.io;
+package uk.ac.mmu.game.infrastructure.driving.PlayHistoric.io;
 
 
 import uk.ac.mmu.game.applicationcode.domain.dice.NonRandomDice;
@@ -9,7 +9,7 @@ import uk.ac.mmu.game.applicationcode.domain.rules.*;
 
 import java.util.List;
 
-class GameConfigFactory {
+public class GameConfigFactory {
 
     public HitCondition createHitCondition(String name) {
         return switch (name) {

@@ -8,11 +8,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 public class TextFileObserver implements FileObserver {
-    private final String savePath;
-
-    public TextFileObserver(String savePath) {
-        this.savePath = savePath;
-    }
+    private final String savePath = (System.getProperty("user.dir") +"\\Games\\");
 
     @Override
     public void onEvent(CreateFile payload) {

@@ -15,7 +15,7 @@ import uk.ac.mmu.game.applicationcode.usecase.RequiredDice;
 import uk.ac.mmu.game.applicationcode.usecase.RequiredHitCondition;
 import uk.ac.mmu.game.applicationcode.usecase.RequiredWinCondition;
 import uk.ac.mmu.game.applicationcode.usecase.play.PlayGameUseCase;
-import uk.ac.mmu.game.applicationcode.usecase.play.Provided;
+import uk.ac.mmu.game.applicationcode.usecase.play.ProvidedPlayGame;
 
 @Order(2)
 @Configuration
@@ -51,7 +51,7 @@ public class Game2Config {
         return WinConditionStandard::new;
     }
     @Bean
-    public Provided playUseCaseGame2(
+    public ProvidedPlayGame playUseCaseGame2(
             RequiredDice diceGame2,
             RequiredAssetFactory assetFactoryGame2,
             RequiredHitCondition hitConditionGame2,

@@ -3,7 +3,8 @@ package uk.ac.mmu.game.infrastructure.driving.PlayGame;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Component;
-import uk.ac.mmu.game.applicationcode.usecase.play.Provided;
+import uk.ac.mmu.game.applicationcode.usecase.RequiredWinCondition;
+import uk.ac.mmu.game.applicationcode.usecase.play.ProvidedPlayGame;
 
 @Component
 public class PlayGameInitializer implements org.springframework.boot.CommandLineRunner, org.springframework.core.Ordered {
@@ -20,7 +21,7 @@ public class PlayGameInitializer implements org.springframework.boot.CommandLine
     public void run(String... args){
         for (int i = 1; i <= 11; i++) {
             System.out.println("=== Starting Game " + i + " ===");
-            Provided game = context.getBean("playUseCaseGame" + i, Provided.class);
+            ProvidedPlayGame game = context.getBean("playUseCaseGame" + i, ProvidedPlayGame.class);
             game.play();
         }
     }

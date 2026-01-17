@@ -6,7 +6,7 @@ import uk.ac.mmu.game.applicationcode.usecase.RequiredDice;
 import uk.ac.mmu.game.applicationcode.usecase.RequiredHitCondition;
 import uk.ac.mmu.game.applicationcode.usecase.RequiredWinCondition;
 
-public class PlayGameUseCase implements Provided {
+public class PlayGameUseCase implements ProvidedPlayGame {
 
     private final RequiredDice dice;
     private final RequiredAssetFactory assets;

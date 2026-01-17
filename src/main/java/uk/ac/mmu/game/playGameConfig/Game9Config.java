@@ -14,7 +14,7 @@ import uk.ac.mmu.game.applicationcode.usecase.RequiredDice;
 import uk.ac.mmu.game.applicationcode.usecase.RequiredHitCondition;
 import uk.ac.mmu.game.applicationcode.usecase.RequiredWinCondition;
 import uk.ac.mmu.game.applicationcode.usecase.play.PlayGameUseCase;
-import uk.ac.mmu.game.applicationcode.usecase.play.Provided;
+import uk.ac.mmu.game.applicationcode.usecase.play.ProvidedPlayGame;
 
 @Order(9)
 @Configuration
@@ -50,7 +50,7 @@ public class Game9Config {
     }
     @Bean
     @Scope("prototype")
-    public Provided playUseCaseGame9(
+    public ProvidedPlayGame playUseCaseGame9(
             RequiredDice diceGame9,
             RequiredAssetFactory assetFactoryGame9,
             RequiredHitCondition hitConditionGame9,

@@ -5,13 +5,13 @@ import uk.ac.mmu.game.applicationcode.usecase.RequiredDice;
 import uk.ac.mmu.game.applicationcode.usecase.RequiredHitCondition;
 import uk.ac.mmu.game.applicationcode.usecase.RequiredWinCondition;
 
-public interface Provided {
+public interface ProvidedPlayGame {
     void play();
 
-    static Provided getInstance(RequiredDice dice,
-                                RequiredAssetFactory assets,
-                                RequiredHitCondition hitCondition,
-                                RequiredWinCondition winCondition) {
+    static ProvidedPlayGame getInstance(RequiredDice dice,
+                                        RequiredAssetFactory assets,
+                                        RequiredHitCondition hitCondition,
+                                        RequiredWinCondition winCondition) {
         return new PlayGameUseCase(dice, assets, hitCondition, winCondition);
     }
 }

@@ -8,15 +8,13 @@ import org.springframework.core.annotation.Order;
 import uk.ac.mmu.game.applicationcode.domain.dice.NonRandomDice;
 import uk.ac.mmu.game.applicationcode.domain.factories.TwoPlayerAssets;
 import uk.ac.mmu.game.applicationcode.domain.rules.HitConditionOnePerSpace;
-import uk.ac.mmu.game.applicationcode.domain.rules.HitConditionStandard;
 import uk.ac.mmu.game.applicationcode.domain.rules.WinConditionExact;
-import uk.ac.mmu.game.applicationcode.domain.rules.WinConditionStandard;
 import uk.ac.mmu.game.applicationcode.usecase.RequiredAssetFactory;
 import uk.ac.mmu.game.applicationcode.usecase.RequiredDice;
 import uk.ac.mmu.game.applicationcode.usecase.RequiredHitCondition;
 import uk.ac.mmu.game.applicationcode.usecase.RequiredWinCondition;
 import uk.ac.mmu.game.applicationcode.usecase.play.PlayGameUseCase;
-import uk.ac.mmu.game.applicationcode.usecase.play.Provided;
+import uk.ac.mmu.game.applicationcode.usecase.play.ProvidedPlayGame;
 
 @Order(7)
 @Configuration
@@ -52,7 +50,7 @@ public class Game7Config {
     }
     @Bean
     @Scope("prototype")
-    public Provided playUseCaseGame7(
+    public ProvidedPlayGame playUseCaseGame7(
             RequiredDice diceGame7,
             RequiredAssetFactory assetFactoryGame7,
             RequiredHitCondition hitConditionGame7,

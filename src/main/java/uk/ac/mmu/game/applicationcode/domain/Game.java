@@ -72,7 +72,7 @@ public class Game {
 
     public void addDefaultObservers() {
         observers.add(new ConsolePlayObserver());
-        observers.add(new TextFileObserver((System.getProperty("user.dir") +"\\Games\\" )));
+        observers.add(new TextFileObserver());
         observers.add(new ConsoleStateObserver());
     }
 

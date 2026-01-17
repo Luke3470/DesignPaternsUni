@@ -1,6 +1,4 @@
-package uk.ac.mmu.game.infrastructure.driven.io;
-
-import uk.ac.mmu.game.applicationcode.domain.config.GameConfig;
+package uk.ac.mmu.game.infrastructure.driving.PlayHistoric.io;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -8,12 +6,11 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-class ConfigReader {
+public class ConfigReader {
 
-    public GameConfig load(String filePath) throws IOException {
+    public static GameConfig load(String filePath) throws IOException {
         try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
 
-            // Read first 3 lines as key/value pairs
             String hitLine = reader.readLine();
             String winLine = reader.readLine();
             String assetLine = reader.readLine();
@@ -22,7 +19,6 @@ class ConfigReader {
             String winValue = getValue(winLine);
             String assetValue = getValue(assetLine);
 
-            // Read remaining integers
             List<Integer> numbers = new ArrayList<>();
             String line;
 
@@ -33,11 +29,13 @@ class ConfigReader {
             }
 
             return new GameConfig(hitValue, winValue, assetValue, numbers);
+        }catch (IOException e) {
+            System.err.println("Failed to save game: " + e.getMessage());
+            return null;
         }
     }
 
-    // Helper to split "Key: Value"
-    private String getValue(String line) {
+    static String getValue(String line) {
         if (line == null) return null;
         String[] parts = line.split(":", 2);
         return parts.length == 2 ? parts[1].trim() : null;

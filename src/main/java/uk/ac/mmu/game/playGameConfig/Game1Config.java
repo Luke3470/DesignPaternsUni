@@ -1,7 +1,6 @@
 package uk.ac.mmu.game.playGameConfig;
 
 import jakarta.annotation.PostConstruct;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Scope;
@@ -15,7 +14,7 @@ import uk.ac.mmu.game.applicationcode.usecase.RequiredDice;
 import uk.ac.mmu.game.applicationcode.usecase.RequiredHitCondition;
 import uk.ac.mmu.game.applicationcode.usecase.RequiredWinCondition;
 import uk.ac.mmu.game.applicationcode.usecase.play.PlayGameUseCase;
-import uk.ac.mmu.game.applicationcode.usecase.play.Provided;
+import uk.ac.mmu.game.applicationcode.usecase.play.ProvidedPlayGame;
 
 @Order(1)
 @Configuration
@@ -51,7 +50,7 @@ public class Game1Config {
     }
     @Bean
     @Scope("prototype")
-    public Provided playUseCaseGame1(
+    public ProvidedPlayGame playUseCaseGame1(
             RequiredDice diceGame1,
             RequiredAssetFactory assetFactoryGame1,
             RequiredHitCondition hitConditionGame1,
