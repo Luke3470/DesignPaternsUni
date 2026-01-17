@@ -1,6 +1,7 @@
 package uk.ac.mmu.game.applicationcode.usecase.playhistoric;
 
 import uk.ac.mmu.game.applicationcode.domain.Game;
+import uk.ac.mmu.game.applicationcode.domain.PlayableGame;
 import uk.ac.mmu.game.applicationcode.domain.dice.Dice;
 import uk.ac.mmu.game.applicationcode.domain.factories.AssetFactory;
 import uk.ac.mmu.game.applicationcode.domain.rules.HitCondition;
@@ -22,7 +23,7 @@ public class PlayHistoricUseCase implements ProvidedPlayHistoric {
 
   @Override
   public Response play() {
-    Game game = new Game(
+    PlayableGame game = new Game(
         dice,
         assets,
         hitCondition,

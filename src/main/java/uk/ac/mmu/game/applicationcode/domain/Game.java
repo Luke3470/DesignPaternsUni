@@ -24,7 +24,7 @@ import uk.ac.mmu.game.infrastructure.driven.file.TextFileObserver;
 import uk.ac.mmu.game.infrastructure.driven.file.payload.CreateFile;
 
 
-public class Game {
+public class Game implements PlayableGame {
 
   private GameState gameState = new GameStateReady(this);
   private final Dice dice;
@@ -91,6 +91,7 @@ public class Game {
     return this.gameState;
   }
 
+  @Override
   public void play() {
     this.gameState.show();
     while (!(this.gameState instanceof GameStateGameOver)) {

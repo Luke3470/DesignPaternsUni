@@ -36,9 +36,9 @@ public class ConfigReader {
   }
 
   static String getValue(String line) {
-      if (line == null) {
-          return null;
-      }
+    if (line == null) {
+      return null;
+    }
     String[] parts = line.split(":", 2);
     return parts.length == 2 ? parts[1].trim() : null;
   }

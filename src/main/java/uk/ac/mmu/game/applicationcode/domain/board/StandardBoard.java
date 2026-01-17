@@ -40,50 +40,50 @@ public class StandardBoard implements Board {
         outerBoard[outerPos].remove(player.getName());
 
         int tailIndex = diceRoll - distanceToFinal - 1;
-          if (tailIndex >= tailLength()) {
-              tailIndex = tailLength() - 1;
-          }
+        if (tailIndex >= tailLength()) {
+          tailIndex = tailLength() - 1;
+        }
 
         innerBoards[player.getIndex()][tailIndex] = player.getName();
 
         lastRemainingRoll = diceRoll - distanceToFinal - (tailIndex + 1);
-          if (lastRemainingRoll < 0) {
-              lastRemainingRoll = 0;
-          }
+        if (lastRemainingRoll < 0) {
+          lastRemainingRoll = 0;
+        }
       }
 
     } else if (tailPos != -1) {
       innerBoards[player.getIndex()][tailPos] = null;
 
       int newTailPos = tailPos + diceRoll;
-        if (newTailPos >= tailLength()) {
-            newTailPos = tailLength() - 1;
-        }
+      if (newTailPos >= tailLength()) {
+        newTailPos = tailLength() - 1;
+      }
 
       innerBoards[player.getIndex()][newTailPos] = player.getName();
 
       lastRemainingRoll = diceRoll - (newTailPos - tailPos);
-        if (lastRemainingRoll < 0) {
-            lastRemainingRoll = 0;
-        }
+      if (lastRemainingRoll < 0) {
+        lastRemainingRoll = 0;
+      }
     }
   }
 
 
   private int findPlayerOnOuterBoard(Player player) {
     for (int i = 0; i < outerBoard.length; i++) {
-        if (outerBoard[i].contains(player.getName())) {
-            return i;
-        }
+      if (outerBoard[i].contains(player.getName())) {
+        return i;
+      }
     }
     return -1;
   }
 
   private int findPlayerOnTail(Player player) {
     for (int i = 0; i < innerBoards[player.getIndex()].length; i++) {
-        if (player.getName().equals(innerBoards[player.getIndex()][i])) {
-            return i;
-        }
+      if (player.getName().equals(innerBoards[player.getIndex()][i])) {
+        return i;
+      }
     }
     return -1;
   }
@@ -107,19 +107,19 @@ public class StandardBoard implements Board {
   @Override
   public void setPos(Player player, String pos) {
     int outer = findPlayerOnOuterBoard(player);
-      if (outer != -1) {
-          outerBoard[outer].remove(player.getName());
-      }
+    if (outer != -1) {
+      outerBoard[outer].remove(player.getName());
+    }
 
     int tail = findPlayerOnTail(player);
-      if (tail != -1) {
-          innerBoards[player.getIndex()][tail] = null;
-      }
+    if (tail != -1) {
+      innerBoards[player.getIndex()][tail] = null;
+    }
 
     String numeric = pos.replaceAll("[^0-9]", "");
-      if (numeric.isEmpty()) {
-          return;
-      }
+    if (numeric.isEmpty()) {
+      return;
+    }
 
     int index = Integer.parseInt(numeric) - 1;
 
@@ -133,23 +133,23 @@ public class StandardBoard implements Board {
   @Override
   public String posContains(String pos, Player currentPlayer) {
     String numeric = pos.replaceAll("[^0-9]", "");
-      if (numeric.isEmpty()) {
-          return null;
-      }
+    if (numeric.isEmpty()) {
+      return null;
+    }
 
     int index = Integer.parseInt(numeric) - 1;
     Set<String> occupants = outerBoard[index];
 
-      if (occupants.isEmpty()) {
-          return null;
-      }
+    if (occupants.isEmpty()) {
+      return null;
+    }
 
     StringBuilder sb = new StringBuilder();
     for (String name : occupants) {
       if (!name.equals(currentPlayer.getName())) {
-          if (!sb.isEmpty()) {
-              sb.append(", ");
-          }
+        if (!sb.isEmpty()) {
+          sb.append(", ");
+        }
         sb.append(name);
       }
     }

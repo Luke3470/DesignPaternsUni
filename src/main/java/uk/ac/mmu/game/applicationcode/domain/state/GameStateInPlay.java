@@ -51,16 +51,16 @@ public class GameStateInPlay implements GameState {
       MoveResult result = rollAndMove(player, die, board);
 
       MoveOutcome hitOutcome = hitCondition.checkHit(board, result);
-        if (applyOutcome(hitOutcome, result)) {
-            continue;
-        }
+      if (applyOutcome(hitOutcome, result)) {
+        continue;
+      }
 
       MoveOutcome winOutcome = winCondition.checkWin(board, result);
       applyOutcome(winOutcome, result);
 
-        if (winOutcome != null && winOutcome.endsGame()) {
-            this.next();
-        }
+      if (winOutcome != null && winOutcome.endsGame()) {
+        this.next();
+      }
     }
 
   }
@@ -108,9 +108,9 @@ public class GameStateInPlay implements GameState {
 
   private void incrementTurn(Player player) {
     totalTurns++;
-      if (player.getIndex() == 0) {
-          turn++;
-      }
+    if (player.getIndex() == 0) {
+      turn++;
+    }
   }
 
   private void updateRoll(Player player, int roll) {
@@ -130,9 +130,9 @@ public class GameStateInPlay implements GameState {
   }
 
   private boolean applyOutcome(MoveOutcome outcome, MoveResult result) {
-      if (outcome == null) {
-          return false;
-      }
+    if (outcome == null) {
+      return false;
+    }
 
     outcome.apply(this, result);
     return outcome.endsTurn() || outcome.endsGame();

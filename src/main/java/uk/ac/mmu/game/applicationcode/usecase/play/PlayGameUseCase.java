@@ -1,6 +1,7 @@
 package uk.ac.mmu.game.applicationcode.usecase.play;
 
 import uk.ac.mmu.game.applicationcode.domain.Game;
+import uk.ac.mmu.game.applicationcode.domain.PlayableGame;
 import uk.ac.mmu.game.applicationcode.usecase.RequiredAssetFactory;
 import uk.ac.mmu.game.applicationcode.usecase.RequiredDice;
 import uk.ac.mmu.game.applicationcode.usecase.RequiredHitCondition;
@@ -27,7 +28,7 @@ public class PlayGameUseCase implements ProvidedPlayGame {
 
   @Override
   public void play() {
-    Game game = new Game(
+    PlayableGame game = new Game(
         dice.getDice(),
         assets.getAssetFactory(),
         hitCondition.getHitCondition(),
