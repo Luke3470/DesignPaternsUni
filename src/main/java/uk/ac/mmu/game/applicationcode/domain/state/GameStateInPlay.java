@@ -1,0 +1,120 @@
+package uk.ac.mmu.game.applicationcode.domain.state;
+
+import Game.Assets.*;
+import Game.Assets.Payloads.*;
+import Game.Dice.Dice;
+import Game.Dice.Types.RollValue;
+import uk.ac.mmu.game.application.Game;
+import Game.Rules.HitCondition;
+import Game.Rules.Outcomes.MoveOutcome;
+import Game.Rules.WinCondition;
+import uk.ac.mmu.game.domain.state.GameState;
+import uk.ac.mmu.game.domain.state.GameStateGameOver;
+
+import java.util.Stack;
+
+public class GameStateInPlay implements GameState {
+    public Game game = null;
+    protected HitCondition hitCondition = null;
+    protected WinCondition winCondition = null;
+    public Stack<Command> history = null;
+    public int turn = 0;
+    public int totalTurns = 0;
+
+    GameStateInPlay(Game game){
+        this.game = game;
+        this.hitCondition = game.getHitCondition();
+        this.winCondition = game.getWinCondition();
+        this.history = new Stack<>();
+    }
+    @Override
+    public void play() {
+        Dice die = game.getDice();
+        Board board = game.getBoard();
+
+        for(Player player: game.getPlayersList()){
+            incrementTurn(player);
+
+            MoveResult result = rollAndMove(player, die, board);
+
+            MoveOutcome hitOutcome = hitCondition.checkHit(board, result);
+            if (applyOutcome(hitOutcome, result)) continue;
+
+            MoveOutcome winOutcome = winCondition.checkWin(board, result);
+            applyOutcome(winOutcome, result);
+
+            if (winOutcome != null && winOutcome.endsGame())
+                this.next();
+        }
+
+    }
+    @Override
+    public void next(){
+        updateState("In Play","Game Over");
+        game.setState(new GameStateGameOver(game));
+    }
+    @Override
+    public String toString(){
+        return "Game State: In Play";
+    }
+    @Override
+    public void updateState(String currentState, String nextState){
+        StateChange event = new StateChange(currentState,nextState);
+        game.notifyObservers(StateObserver.class, StateObserver -> StateObserver.onEvent(event));
+    }
+
+    @Override
+    public void displayState(String state) {
+        ViewState event = new ViewState(state);
+        game.notifyObservers(StateObserver.class, StateObserver -> StateObserver.onEvent(event));
+    }
+
+    @Override
+    public void show() {
+        displayState("In Play");
+    }
+    public void onMove(MoveResult result){
+        OnMove event = new OnMove(result);
+        game.notifyObservers(PlayObserver.class, PlayObserver -> PlayObserver.onEvent(event));
+    }
+    public void onWin(Player player, int turn, int totalTurns){
+        OnWin event = new OnWin(player, turn, totalTurns);
+        game.notifyObservers(PlayObserver.class, PlayObserver -> PlayObserver.onEvent(event));
+    }
+
+    public void onHit(MoveResult result, String playerHit){
+        OnHit event = new OnHit(result.player.getTextColour(),playerHit,result.to);
+        game.notifyObservers(PlayObserver.class, PlayObserver -> PlayObserver.onEvent(event));
+    }
+
+    public void onOvershoot(Player player){
+        OnOverShoot event = new OnOverShoot(player.getTextColour(),player.getName());
+        game.notifyObservers(PlayObserver.class, PlayObserver -> PlayObserver.onEvent(event));
+    }
+
+    private void incrementTurn(Player player) {
+        totalTurns++;
+        if (player.getIndex() == 0) turn++;
+    }
+    private void updateRoll(Player player, int roll){
+        OnRoll event = new OnRoll(player ,roll);
+        game.notifyObservers(PlayObserver.class, PlayObserver -> PlayObserver.onEvent(event));
+    }
+    private MoveResult rollAndMove(Player player, Dice die, Board board) {
+        int roll = die.roll();
+        game.addRoll(RollValue.of(roll));
+        updateRoll(player, roll);
+        Command move = new MoveCommand(player, board, roll);
+        MoveResult result = move.execute();
+        history.push(move);
+
+        return result;
+    }
+    private boolean applyOutcome(MoveOutcome outcome, MoveResult result) {
+        if (outcome == null) return false;
+
+        outcome.apply(this, result);
+        return outcome.endsTurn() || outcome.endsGame();
+    }
+
+}

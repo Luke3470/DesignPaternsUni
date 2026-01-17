@@ -1,0 +1,17 @@
+package uk.ac.mmu.game.applicationcode.domain.dice;
+
+import uk.ac.mmu.game.domain.dice.Dice;
+
+import java.util.Random;
+
+public class SingleDice implements Dice {
+    private final Random rand = new Random();
+    @Override
+    public int roll() {
+        return rand.nextInt(6) + 1;
+    }
+    @Override
+    public String toString(){
+        return "SingleDice";
+    }
+}
