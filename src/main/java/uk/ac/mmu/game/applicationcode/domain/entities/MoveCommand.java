@@ -42,7 +42,7 @@ public class MoveCommand implements Command {
             }
         }
 
-        if (pos.startsWith("R") || pos.startsWith("B")) {
+        if (pos.startsWith("R") || pos.startsWith("B") || pos.startsWith("Y") || pos.startsWith("G")) {
             if (isFrom) {
                 return "Position " + pos;
             } else {
