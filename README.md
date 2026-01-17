@@ -4,13 +4,12 @@ Frustration Game
 
 **Author:** *Luke Cadman*
 # Dice Variation
-
 ```mermaid
 classDiagram
 
     class Dice {
-        <<interface>>
-        +roll() int
+    <<interface>>
+    ~roll() int
     }
 
     class DiceDecorator {
@@ -22,7 +21,7 @@ classDiagram
 
     class DiceFactory {
         <<interface>>
-        +assemble() Dice
+        ~assemble() Dice
     }
 
 
@@ -37,7 +36,7 @@ classDiagram
         -int current
         +roll() int
         +toString() String
-        +length() int
+        +lenght() int
     }
 
     class SingleDice {
@@ -54,7 +53,6 @@ classDiagram
     DiceDecorator <|-- Dice
     DiceFactory <|.. DiceFactoryImpl
 '''
-
 ---------------
 Hit variation
 Win variation
