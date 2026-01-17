@@ -18,6 +18,7 @@ public class GameStateReady implements GameState {
     }
     @Override
     public void next(){
+
         updateState("Ready","Inplay");
         game.setState(new GameStateInPlay(game));
     }

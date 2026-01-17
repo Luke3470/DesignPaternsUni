@@ -1,6 +1,7 @@
 package uk.ac.mmu.game.applicationcode.domain.state;
 
 import uk.ac.mmu.game.applicationcode.domain.Game;
+import uk.ac.mmu.game.applicationcode.domain.dice.NonRandomDice;
 import uk.ac.mmu.game.applicationcode.domain.observers.FileObserver;
 import uk.ac.mmu.game.applicationcode.domain.observers.StateObserver;
 import uk.ac.mmu.game.infrastructure.driven.console.payload.*;
@@ -13,9 +14,15 @@ public class GameStateGameOver implements GameState {
         this.game = game;
     }
     @Override
-    public void play(){
-       CreateFile file = game.save();
-       game.notifyObservers(FileObserver.class, FileObserver -> FileObserver.onEvent(file));
+    public void play(){;
+        if (game.getDice() instanceof NonRandomDice){
+            int len = ((NonRandomDice) game.getDice()).length();
+            for (int i = 0; i < len-game.getRolls().size(); i++) {
+                next();
+            }
+        }
+        CreateFile file = game.save();
+        game.notifyObservers(FileObserver.class, FileObserver -> FileObserver.onEvent(file));
 
     }
     @Override
@@ -45,10 +52,6 @@ public class GameStateGameOver implements GameState {
         return super.hashCode();
     }
 
-    @Override
-    public boolean equals(Object o){
-        return false;
-    }
 
     @Override
     public String toString(){

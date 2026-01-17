@@ -12,6 +12,7 @@ public class OvershootWinOutcome extends MoveOutcome {
     @Override
     public void apply(GameStateInPlay ctx, MoveResult result) {
         ctx.onOvershoot(result.player);
+        ctx.onMove(result);
         ctx.onWin(result.player, ctx.turn, ctx.totalTurns);
     }
 }

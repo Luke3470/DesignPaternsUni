@@ -24,4 +24,8 @@ public class NonRandomDice implements Dice {
     public String toString(){
         return "NonRandomDice";
     }
+
+    public int length(){
+        return rolls.length;
+    }
 }

@@ -1,0 +1,66 @@
+package uk.ac.mmu.game.playGameConfig;
+
+import jakarta.annotation.PostConstruct;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Scope;
+import org.springframework.core.annotation.Order;
+import uk.ac.mmu.game.applicationcode.domain.dice.NonRandomDice;
+import uk.ac.mmu.game.applicationcode.domain.factories.TwoPlayerAssets;
+import uk.ac.mmu.game.applicationcode.domain.rules.HitConditionStandard;
+import uk.ac.mmu.game.applicationcode.domain.rules.WinConditionStandard;
+import uk.ac.mmu.game.applicationcode.usecase.RequiredAssetFactory;
+import uk.ac.mmu.game.applicationcode.usecase.RequiredDice;
+import uk.ac.mmu.game.applicationcode.usecase.RequiredHitCondition;
+import uk.ac.mmu.game.applicationcode.usecase.RequiredWinCondition;
+import uk.ac.mmu.game.applicationcode.usecase.play.PlayGameUseCase;
+import uk.ac.mmu.game.applicationcode.usecase.play.Provided;
+
+@Order(3)
+@Configuration
+public class Game3Config {
+    @PostConstruct
+    public void init() {
+        System.out.println("Loaded Game3Config");
+    }
+
+
+    @Bean
+    @Qualifier("diceGame3")
+    @Scope("prototype")
+    public RequiredDice diceGame3() {
+        return () -> new NonRandomDice(new int[]{8, 2, 3, 4, 9});
+    }
+
+    @Bean
+    @Qualifier("assetFactoryGame3")
+    @Scope("prototype")
+    public RequiredAssetFactory assetFactoryGame3() {
+        return TwoPlayerAssets::new;
+    }
+
+    @Bean
+    @Qualifier("hitConditionGame3")
+    @Scope("prototype")
+    public RequiredHitCondition hitConditionGame3() {
+        return HitConditionStandard::new;
+    }
+
+    @Bean
+    @Qualifier("winConditionGame3")
+    @Scope("prototype")
+    public RequiredWinCondition winConditionGame3() {
+        return WinConditionStandard::new;
+    }
+    @Bean
+    @Scope("prototype")
+    public Provided playUseCaseGame3(
+            @Qualifier("diceGame3") RequiredDice diceGame3,
+            @Qualifier("assetFactoryGame3") RequiredAssetFactory assetFactoryGame3,
+            @Qualifier("hitConditionGame3") RequiredHitCondition hitConditionGame3,
+            @Qualifier("winConditionGame3") RequiredWinCondition winConditionGame3
+    ) {
+        return new PlayGameUseCase(diceGame3, assetFactoryGame3, hitConditionGame3, winConditionGame3);
+    }
+}

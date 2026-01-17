@@ -109,4 +109,8 @@ public class Game {
     public CreateFile save(){
         return new CreateFile(hitCondition,winCondition,rolls,assets);
     }
+    public List<RollValue> getRolls() {
+        return rolls;
+    }
+
 }
