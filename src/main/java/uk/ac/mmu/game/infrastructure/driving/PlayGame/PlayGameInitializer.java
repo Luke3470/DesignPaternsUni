@@ -3,19 +3,24 @@ package uk.ac.mmu.game.infrastructure.driving.PlayGame;
 import org.springframework.stereotype.Component;
 import uk.ac.mmu.game.applicationcode.usecase.play.Provided;
 
+import java.util.List;
+
 @Component
 public class PlayGameInitializer implements org.springframework.boot.CommandLineRunner, org.springframework.core.Ordered {
 
-    private final Provided provided;
+    private final List<Provided> games;
 
-    public PlayGameInitializer(Provided provided) {
-        this.provided = provided;
+    public PlayGameInitializer(List<Provided> games) {
+        this.games = games;
     }
 
 
     @Override
     public void run(String... args){
-        provided.play();
+        for (int i = 0; i < games.size(); i++) {
+            System.out.println("=== Starting Game " + (i + 1) + " ===");
+            games.get(i).play();
+        }
     }
 
     @Override
