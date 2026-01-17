@@ -28,7 +28,7 @@ public class GameStateGameOver implements GameState {
 
   @Override
   public void next() {
-    game.getMediator().notifyStateChange("Game Over", null);
+    game.getMediator().notifyViewState("Game Over");;
   }
 
   @Override
