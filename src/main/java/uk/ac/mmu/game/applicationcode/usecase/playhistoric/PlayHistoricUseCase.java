@@ -32,7 +32,7 @@ public class PlayHistoricUseCase implements ProvidedPlayHistoric {
       );
       game.play();
       return new Response(true);
-    }catch (Exception e) {
+    } catch (Exception e) {
       return new Response(false);
     }
   }
