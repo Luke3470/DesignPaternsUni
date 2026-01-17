@@ -51,7 +51,7 @@ classDiagram
     }
     
     DiceDecorator <|-- Dice
-'''
+```
 ---------------
 Hit variation
 Win variation
