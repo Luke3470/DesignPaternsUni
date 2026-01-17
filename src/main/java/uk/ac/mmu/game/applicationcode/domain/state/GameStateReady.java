@@ -1,10 +1,10 @@
 package uk.ac.mmu.game.applicationcode.domain.state;
 
-import uk.ac.mmu.game.domain.state.GameState;
-import uk.ac.mmu.game.domain.state.GameStateInPlay;
+
+import uk.ac.mmu.game.applicationcode.domain.Game;
+import uk.ac.mmu.game.applicationcode.domain.observers.StateObserver;
 import uk.ac.mmu.game.infrastructure.console.payload.StateChange;
 import uk.ac.mmu.game.infrastructure.console.payload.ViewState;
-import uk.ac.mmu.game.application.Game;
 
 public class GameStateReady implements GameState {
     private Game game;

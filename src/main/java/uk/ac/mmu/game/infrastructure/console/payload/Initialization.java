@@ -1,9 +1,10 @@
 package uk.ac.mmu.game.infrastructure.console.payload;
 
-import Game.Dice.Dice;
-import Game.Rules.HitCondition;
-import Game.Rules.WinCondition;
 
+import uk.ac.mmu.game.applicationcode.domain.dice.Dice;
+import uk.ac.mmu.game.applicationcode.domain.factories.AssetFactory;
+import uk.ac.mmu.game.applicationcode.domain.rules.HitCondition;
+import uk.ac.mmu.game.applicationcode.domain.rules.WinCondition;
 
 public class Initialization {
     public HitCondition hitCondition;

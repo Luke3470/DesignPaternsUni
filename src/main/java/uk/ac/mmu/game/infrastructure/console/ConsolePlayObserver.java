@@ -1,6 +1,7 @@
 package uk.ac.mmu.game.infrastructure.console;
 
-import Game.Assets.Payloads.*;
+import uk.ac.mmu.game.applicationcode.domain.observers.PlayObserver;
+import uk.ac.mmu.game.infrastructure.console.payload.*;
 
 public class ConsolePlayObserver implements PlayObserver {
     @Override

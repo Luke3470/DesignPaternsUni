@@ -1,5 +1,6 @@
 package uk.ac.mmu.game.infrastructure.console;
 
+import uk.ac.mmu.game.applicationcode.domain.observers.StateObserver;
 import uk.ac.mmu.game.infrastructure.console.payload.EndState;
 import uk.ac.mmu.game.infrastructure.console.payload.StateChange;
 import uk.ac.mmu.game.infrastructure.console.payload.ViewState;

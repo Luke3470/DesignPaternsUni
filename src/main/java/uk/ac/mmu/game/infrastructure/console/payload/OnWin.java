@@ -1,6 +1,6 @@
 package uk.ac.mmu.game.infrastructure.console.payload;
 
-import uk.ac.mmu.game.domain.entities.Player;
+import uk.ac.mmu.game.applicationcode.domain.entities.Player;
 
 public class OnWin {
     public Player player;

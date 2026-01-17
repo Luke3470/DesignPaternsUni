@@ -1,6 +1,6 @@
 package uk.ac.mmu.game.applicationcode.domain.board;
 
-import uk.ac.mmu.game.domain.board.Board;
+import uk.ac.mmu.game.applicationcode.domain.entities.Player;
 
 import java.util.HashSet;
 import java.util.Set;

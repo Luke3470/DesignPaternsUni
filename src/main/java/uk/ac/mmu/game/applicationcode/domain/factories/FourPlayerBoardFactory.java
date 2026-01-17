@@ -1,6 +1,11 @@
 package uk.ac.mmu.game.applicationcode.domain.factories;
 
-import static uk.ac.mmu.game.domain.entities.Player.*;
+import uk.ac.mmu.game.applicationcode.domain.board.Board;
+import uk.ac.mmu.game.applicationcode.domain.board.BoardFactory;
+import uk.ac.mmu.game.applicationcode.domain.board.StandardBoard;
+import uk.ac.mmu.game.applicationcode.domain.entities.Player;
+
+import static uk.ac.mmu.game.applicationcode.domain.entities.Player.*;
 
 public class FourPlayerBoardFactory implements BoardFactory {
     @Override

@@ -1,7 +1,6 @@
 package uk.ac.mmu.game.infrastructure.console.payload;
 
-import uk.ac.mmu.game.domain.entities.MoveResult;
-
+import uk.ac.mmu.game.applicationcode.domain.entities.MoveResult;
 
 public class OnMove {
     public MoveResult result;

@@ -1,6 +1,5 @@
 package uk.ac.mmu.game.applicationcode.domain.dice;
 
-import uk.ac.mmu.game.domain.dice.Dice;
 
 import java.util.Random;
 

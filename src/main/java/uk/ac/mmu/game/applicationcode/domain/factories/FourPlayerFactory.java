@@ -1,10 +1,13 @@
 package uk.ac.mmu.game.applicationcode.domain.factories;
 
-import static uk.ac.mmu.game.domain.entities.Player.*;
+import uk.ac.mmu.game.applicationcode.domain.entities.Player;
+import uk.ac.mmu.game.applicationcode.domain.player.PlayerFactory;
 
-public class FourPlayerFactory implements PlayerFactory{
+import static uk.ac.mmu.game.applicationcode.domain.entities.Player.*;
+
+public class FourPlayerFactory implements PlayerFactory {
     @Override
-    public Player [] construct() {
+    public Player[] construct() {
         Player playerOne = PLAYER1;
         Player playerTwo = PLAYER2;
         playerOne.SetFinalTrackPos(35);

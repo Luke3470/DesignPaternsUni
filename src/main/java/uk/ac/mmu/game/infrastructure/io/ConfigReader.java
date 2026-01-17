@@ -1,6 +1,6 @@
 package uk.ac.mmu.game.infrastructure.io;
 
-import uk.ac.mmu.game.domain.config.GameConfig;
+import uk.ac.mmu.game.applicationcode.domain.config.GameConfig;
 
 import java.io.BufferedReader;
 import java.io.FileReader;

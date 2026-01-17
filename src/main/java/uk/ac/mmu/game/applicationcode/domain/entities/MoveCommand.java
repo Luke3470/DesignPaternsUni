@@ -1,11 +1,10 @@
 package uk.ac.mmu.game.applicationcode.domain.entities;
 
-import uk.ac.mmu.game.domain.entities.Command;
-import uk.ac.mmu.game.domain.entities.MoveResult;
-import uk.ac.mmu.game.domain.entities.Player;
+
+import uk.ac.mmu.game.applicationcode.domain.board.Board;
 
 public class MoveCommand implements Command {
-    private final uk.ac.mmu.game.domain.entities.Player player;
+    private final Player player;
     private final Board board;
     private final int roll;
 
@@ -19,7 +18,7 @@ public class MoveCommand implements Command {
     }
 
     @Override
-    public uk.ac.mmu.game.domain.entities.MoveResult execute() {
+    public MoveResult execute() {
         startPos = board.getPos(player);
         board.move(player, roll);
         endPos = board.getPos(player);

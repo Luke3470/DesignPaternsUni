@@ -1,15 +1,20 @@
 package uk.ac.mmu.game.applicationcode.domain.state;
 
-import Game.Assets.*;
-import Game.Assets.Payloads.*;
-import Game.Dice.Dice;
-import Game.Dice.Types.RollValue;
-import uk.ac.mmu.game.application.Game;
-import Game.Rules.HitCondition;
-import Game.Rules.Outcomes.MoveOutcome;
-import Game.Rules.WinCondition;
-import uk.ac.mmu.game.domain.state.GameState;
-import uk.ac.mmu.game.domain.state.GameStateGameOver;
+
+import uk.ac.mmu.game.applicationcode.domain.Game;
+import uk.ac.mmu.game.applicationcode.domain.board.Board;
+import uk.ac.mmu.game.applicationcode.domain.dice.Dice;
+import uk.ac.mmu.game.applicationcode.domain.dice.Types.RollValue;
+import uk.ac.mmu.game.applicationcode.domain.entities.Command;
+import uk.ac.mmu.game.applicationcode.domain.entities.MoveCommand;
+import uk.ac.mmu.game.applicationcode.domain.entities.MoveResult;
+import uk.ac.mmu.game.applicationcode.domain.entities.Player;
+import uk.ac.mmu.game.applicationcode.domain.observers.PlayObserver;
+import uk.ac.mmu.game.applicationcode.domain.observers.StateObserver;
+import uk.ac.mmu.game.applicationcode.domain.rules.HitCondition;
+import uk.ac.mmu.game.applicationcode.domain.rules.Outcomes.MoveOutcome;
+import uk.ac.mmu.game.applicationcode.domain.rules.WinCondition;
+import uk.ac.mmu.game.infrastructure.console.payload.*;
 
 import java.util.Stack;
 

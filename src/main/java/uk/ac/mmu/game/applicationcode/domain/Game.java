@@ -1,14 +1,21 @@
 package uk.ac.mmu.game.applicationcode.domain;
 
-import Game.Assets.*;
-import Game.Dice.Dice;
-import Game.Dice.Types.RollValue;
-import Game.Rules.HitCondition;
-import Game.Rules.WinCondition;
-import Game.States.GameState;
-import Game.States.GameStateGameOver;
-import Game.States.GameStateReady;
+import uk.ac.mmu.game.applicationcode.domain.board.Board;
+import uk.ac.mmu.game.applicationcode.domain.dice.Dice;
+import uk.ac.mmu.game.applicationcode.domain.dice.Types.RollValue;
+import uk.ac.mmu.game.applicationcode.domain.factories.AssetFactory;
+import uk.ac.mmu.game.applicationcode.domain.observers.BaseObserver;
+import uk.ac.mmu.game.applicationcode.domain.observers.PlayObserver;
+import uk.ac.mmu.game.applicationcode.domain.player.PlayerIterable;
+import uk.ac.mmu.game.applicationcode.domain.rules.HitCondition;
+import uk.ac.mmu.game.applicationcode.domain.rules.WinCondition;
+import uk.ac.mmu.game.applicationcode.domain.state.GameState;
+import uk.ac.mmu.game.applicationcode.domain.state.GameStateGameOver;
+import uk.ac.mmu.game.applicationcode.domain.state.GameStateReady;
+import uk.ac.mmu.game.infrastructure.console.ConsolePlayObserver;
+import uk.ac.mmu.game.infrastructure.console.ConsoleStateObserver;
 import uk.ac.mmu.game.infrastructure.console.payload.Initialization;
+import uk.ac.mmu.game.infrastructure.file.TextFileObserver;
 import uk.ac.mmu.game.infrastructure.file.payload.CreateFile;
 
 import java.util.ArrayList;
@@ -51,7 +58,7 @@ public class Game {
 
     public void initialize(){
         Initialization init = new Initialization(this.hitCondition,this.winCondition,this.assets,this.dice);
-        notifyObservers(PlayObserver.class,PlayObserver -> PlayObserver.onEvent(init));
+        notifyObservers(PlayObserver.class, PlayObserver -> PlayObserver.onEvent(init));
     }
 
     public void setState(GameState state) {

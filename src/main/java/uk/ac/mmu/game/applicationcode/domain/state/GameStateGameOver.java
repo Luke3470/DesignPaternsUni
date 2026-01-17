@@ -1,10 +1,11 @@
 package uk.ac.mmu.game.applicationcode.domain.state;
 
-import uk.ac.mmu.game.domain.state.GameState;
-import uk.ac.mmu.game.infrastructure.file.payload.CreateFile;
+import uk.ac.mmu.game.applicationcode.domain.Game;
+import uk.ac.mmu.game.applicationcode.domain.observers.FileObserver;
+import uk.ac.mmu.game.applicationcode.domain.observers.StateObserver;
 import uk.ac.mmu.game.infrastructure.console.payload.EndState;
 import uk.ac.mmu.game.infrastructure.console.payload.ViewState;
-import uk.ac.mmu.game.application.Game;
+import uk.ac.mmu.game.infrastructure.file.payload.CreateFile;
 
 public class GameStateGameOver implements GameState {
     private Game game;
@@ -15,7 +16,7 @@ public class GameStateGameOver implements GameState {
     @Override
     public void play(){
        CreateFile file = game.save();
-       game.notifyObservers(FileObserver.class,FileObserver -> FileObserver.onEvent(file));
+       game.notifyObservers(FileObserver.class, FileObserver -> FileObserver.onEvent(file));
 
     }
     @Override

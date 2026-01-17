@@ -1,7 +1,7 @@
 package uk.ac.mmu.game.infrastructure.file;
 
-import uk.ac.mmu.game.adapter.observers.FileObserver;
-import uk.ac.mmu.game.domain.dice.Types.RollValue;
+import uk.ac.mmu.game.applicationcode.domain.dice.Types.RollValue;
+import uk.ac.mmu.game.applicationcode.domain.observers.FileObserver;
 import uk.ac.mmu.game.infrastructure.file.payload.CreateFile;
 
 import java.io.FileWriter;

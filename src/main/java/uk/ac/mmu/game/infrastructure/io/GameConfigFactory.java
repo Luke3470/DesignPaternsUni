@@ -1,8 +1,11 @@
-package uk.ac.mmu.game.applicationcode.domain.factories;
+package uk.ac.mmu.game.infrastructure.io;
 
-import Game.Assets.*;
-import Game.Dice.NonRandomDice;
-import Game.Rules.*;
+
+import uk.ac.mmu.game.applicationcode.domain.dice.NonRandomDice;
+import uk.ac.mmu.game.applicationcode.domain.factories.AssetFactory;
+import uk.ac.mmu.game.applicationcode.domain.factories.FourPlayerAssets;
+import uk.ac.mmu.game.applicationcode.domain.factories.TwoPlayerAssets;
+import uk.ac.mmu.game.applicationcode.domain.rules.*;
 
 import java.util.List;
 

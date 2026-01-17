@@ -1,9 +1,9 @@
 package uk.ac.mmu.game.applicationcode.domain.player;
 
 
-import Game.States.GameStateGameOver;
-import uk.ac.mmu.game.application.Game;
-import uk.ac.mmu.game.domain.player.PlayerSelector;
+import uk.ac.mmu.game.applicationcode.domain.Game;
+import uk.ac.mmu.game.applicationcode.domain.entities.Player;
+import uk.ac.mmu.game.applicationcode.domain.state.GameStateGameOver;
 
 import java.util.Iterator;
 

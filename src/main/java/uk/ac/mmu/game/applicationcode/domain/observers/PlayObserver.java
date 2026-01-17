@@ -1,6 +1,6 @@
 package uk.ac.mmu.game.applicationcode.domain.observers;
 
-import Game.Assets.Payloads.*;
+import uk.ac.mmu.game.infrastructure.console.payload.*;
 
 public interface PlayObserver extends BaseObserver {
     void onEvent(OnRoll roll);

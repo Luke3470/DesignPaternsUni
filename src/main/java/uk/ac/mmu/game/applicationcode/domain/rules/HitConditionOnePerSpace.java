@@ -1,10 +1,11 @@
 package uk.ac.mmu.game.applicationcode.domain.rules;
 
-import uk.ac.mmu.game.domain.entities.MoveResult;
-import uk.ac.mmu.game.domain.entities.Player;
-import uk.ac.mmu.game.domain.rules.HitCondition;
-import uk.ac.mmu.game.domain.rules.Outcomes.HitUndoOutcome;
-import uk.ac.mmu.game.domain.rules.Outcomes.MoveOutcome;
+
+import uk.ac.mmu.game.applicationcode.domain.board.Board;
+import uk.ac.mmu.game.applicationcode.domain.entities.MoveResult;
+import uk.ac.mmu.game.applicationcode.domain.entities.Player;
+import uk.ac.mmu.game.applicationcode.domain.rules.Outcomes.HitUndoOutcome;
+import uk.ac.mmu.game.applicationcode.domain.rules.Outcomes.MoveOutcome;
 
 public class HitConditionOnePerSpace implements HitCondition {
     @Override

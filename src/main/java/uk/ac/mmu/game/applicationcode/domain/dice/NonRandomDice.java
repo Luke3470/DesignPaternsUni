@@ -1,7 +1,6 @@
 package uk.ac.mmu.game.applicationcode.domain.dice;
 
-import uk.ac.mmu.game.domain.dice.Dice;
-import uk.ac.mmu.game.domain.dice.Types.RollValue;
+import uk.ac.mmu.game.applicationcode.domain.dice.Types.RollValue;
 
 public class NonRandomDice implements Dice {
     private RollValue[] rolls;
