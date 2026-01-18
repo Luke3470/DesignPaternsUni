@@ -183,7 +183,7 @@ removed iterator for graph simplicity
 ```mermaid
 stateDiagram-v2
     [*] --> Ready
-    Ready --> inPlay
+    Ready --> InPlay
     InPlay --> GameOver
     Ready --> Error
     InPlay --> Error
