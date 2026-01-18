@@ -61,7 +61,36 @@ classDiagram
     DiceFactory <|-- SingleDiceFactory
     DiceFactory <|-- DoubleDiceFactory
 ```
-Dice Variations talk about value object and null pattern
+
+
+For my Random Single and double dice implementation I have Use Decorators and the null object pattern as show in lab
+exercises. so the implementation is practically the same for the NonRandom Dice class i have used a roll type Value 
+Object as validation for inputted rolls
+```java
+package uk.ac.mmu.game.applicationcode.domain.dice.Types;
+
+import java.util.Objects;
+
+public class RollValue {
+
+  static final int NONE = 0;
+  final private int rollValue;
+
+  private RollValue(int rollValue) {
+    if ((rollValue < 1) || (rollValue > 12)) {
+      throw new IllegalArgumentException("Roll value must be between 1 and 12");
+    }
+    this.rollValue = rollValue;
+  }
+
+  public static RollValue of(int value) {
+    return new RollValue(value);
+  }
+}
+
+```
+
+This allows for input if just an array of integers to be used as predefined rolls
 
 ---------------
 # Hit Variation
