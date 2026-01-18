@@ -232,40 +232,14 @@ Explain why Base observer
 why txt how uuid why save types and roll not all values then print to console
 Use of payloads in all observers
 
-```mermaid
----
-title: Load Game
----
-classDiagram
 
-    class BaseObserver {
-        <<interface>>
-    }
-    
-    class FileObserver {
-        <<interface>>
-        +onEvent(CreateFile) 
-    }
-    
-    class TextFileObserver {
-        +onEvent(CreateFile)     
-    }
-    
-    class CreateFile {
-        +HitCondition hitCondition
-        +WinCondition winCondition
-        +List<RollValue> rolls
-        +AssetFactory assets
-    }
-    
-    BaseObserver <|-- FileObserver
-    FileObserver <|-- TextFileObserver
-    FileObserver ..> CreateFile
-    TextFileObserver ..> CreateFile
-```
+# Load Game
+
+
+Blah Blah Blah
+
 
 ---------------
-File Output
 Solid
 Ports and A
 Implemntation
