@@ -179,6 +179,18 @@ Use of iterator as well in main game loop to allow for cleaner rotation of playe
 removed iterator for graph simplicity
 
 ---------------
+# State Machine
+```mermaid
+stateDiagram-v2
+    [*] --> Ready
+    Ready --> in Play
+    InPlay --> Game Over
+```
+
+talk about how different states manage different exit conditions etc and how state manages 
+what can happen e.g game lkoop e.g file
+
+---------------
 State Machine
 File Output
 Solid
