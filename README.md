@@ -168,6 +168,8 @@ classDiagram
     BoardFactory <|-- FourPlayerBoardFactory
     FourPlayerAssets *-- TwoPlayerBoardFactory
     TwoPlayerAssets *-- FourPlayerBoardFactory
+    FourPlayerAssets *-- TwoPlayerFactory
+    TwoPlayerAssets *-- FourPlayerFactory
     AssetFactory <|-- TwoPlayerAssets
     AssetFactory <|-- FourPlayerAssets
 ```
