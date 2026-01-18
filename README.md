@@ -136,19 +136,6 @@ classDiagram
         +construct() Player[]    
     }
     
-    class PlayerSelector{
-        <<interface>>
-        +next() Player
-    }
-    
-    class BasicPlayerSelector{
-        -Player[] playerList
-        -int currentPlayer
-        +next() Player
-    }
-    class PlayerIterator{
-        +iterator PlayerIterator
-    }
         
     class TwoPlayerAssets{
         +createPlayers() PlayerIterable
@@ -176,7 +163,6 @@ classDiagram
         +create() Player[]    
     }
         
-    PlayerSelector <|-- BasicPlayerSelector
     PlayerFactory <|-- TwoPlayerFactory
     PlayerFactory <|-- FourPlayerFactory
     BoardFactory <|-- TwoPlayerBoardFactory
@@ -193,6 +179,7 @@ classDiagram
 
 Trying to find somewhere to put an abstract factory as these depedned on each other worked well
 Use of iterator as well in main game loop to allow for cleaner rotation of player which is more expandabkle in future SRP
+removed iterator for graph simplicity
 
 ---------------
 State Machine
