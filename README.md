@@ -195,7 +195,44 @@ talk about how different states manage different exit conditions etc and how sta
 what can happen e.g game lkoop e.g file
 
 ---------------
-State Machine
+# Game Save and Replay
+```mermaid
+---
+title: Save Game
+---
+classDiagram
+
+    class BaseObserver {
+        <<interface>>
+    }
+    
+    class FileObserver {
+        <<interface>>
+        +onEvent(CreateFile) 
+    }
+    
+    class TextFileObserver {
+        +onEvent(CreateFile)     
+    }
+    
+    class CreateFile {
+        +HitCondition hitCondition
+        +WinCondition winCondition
+        +List<RollValue> rolls
+        +AssetFactory assets
+    }
+    
+    BaseObserver --|> FileObserver
+    FileObserver <|-- TextFileObserver
+    FileObserver ..> CreateFile
+    TextFileObserver ..> CreateFile
+```
+
+Explain why Base observer
+why txt how uuid why save types and roll not all values then print to console
+Use of payloads in all observers
+
+---------------
 File Output
 Solid
 Ports and A
