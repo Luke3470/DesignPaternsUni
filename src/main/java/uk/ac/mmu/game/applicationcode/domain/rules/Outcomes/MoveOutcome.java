@@ -18,3 +18,4 @@ public abstract class MoveOutcome {
 
   public abstract void apply(GameStateInPlay ctx, MoveResult result);
 }
+

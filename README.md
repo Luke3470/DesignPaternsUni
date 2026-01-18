@@ -115,7 +115,32 @@ classDiagram
     HitCondition <|-- HitConditionStandard
     HitCondition <|-- HitConditionOnePerSpace
 ```
-talk about use of move outcome to simplfy response put in sample
+
+Hit Conditions have been managed using the strategy pattern to allow for runtime configuration of code based on the
+strategy required.
+
+To simplify response from its strategies previously I used a return if a string to understand if an item was hit or 
+you've overshot. I replaced these with a Move outcome abstract class to do actions based of the outcome and also 
+understand if an outcome is blocking e.g. ending a users turn the base class is below.
+
+```java
+public abstract class MoveOutcome {
+
+  protected boolean endsTurn = false;
+  protected boolean endsGame = false;
+
+  public boolean endsTurn() {
+    return endsTurn;
+  }
+
+  public boolean endsGame() {
+    return endsGame;
+  }
+
+  public abstract void apply(GameStateInPlay ctx, MoveResult result);
+}
+```
+This allows for a very streamlined main game loop. and simplifies this compared to the string used previously.
 
 ---------------
 # Win Variation
@@ -140,9 +165,29 @@ classDiagram
     WinCondition <|-- WinConditionStandard
     WinCondition <|-- WinConditionOnePerSpace
 ```
-How Similar Designed to Above class just with different outcome
-and show how commands are used in outcome to deal with resets
-and how use of tostring overrides allows for simple file and console output
+
+The Design of this is almost identical to Hit variation using strategy but retuning a different outcome.
+
+However, For both win and hit condition i use commands to easily undo if a move result would result in an illegal move
+```java
+package uk.ac.mmu.game.applicationcode.domain.entities;
+
+public interface Command {
+
+  MoveResult execute();
+
+  void undo();
+}
+
+```
+
+
+These Commands have knowledge of the previous move, so they can undo if a move is invalid allowing for Move outcomes to
+be able to undo actions based on there validation. These are also stored in a stack so historic moves are stored and 
+items can be popped if they need to be undone.
+
+As well i have Overridden the toString method in order to allow for accurate printing of the configuration to the console
+
 
 ---------------
 # 4 Player Variation
