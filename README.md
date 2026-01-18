@@ -183,12 +183,12 @@ removed iterator for graph simplicity
 ```mermaid
 stateDiagram-v2
     [*] --> Ready
-    Ready --> in Play
-    In Play --> Game Over
+    Ready --> inPlay
+    InPlay --> GameOver
     Ready --> Error
-    In Play --> Error
+    InPlay --> Error
     Error --> [*]
-    Game Over --> [*]
+    GameOver --> [*]
 ```
 
 talk about how different states manage different exit conditions etc and how state manages 
