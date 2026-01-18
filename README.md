@@ -136,7 +136,6 @@ classDiagram
         +construct() Player[]    
     }
     
-        
     class TwoPlayerAssets{
         +createPlayers() PlayerIterable
         +createBoard() createBoard
@@ -167,12 +166,8 @@ classDiagram
     PlayerFactory <|-- FourPlayerFactory
     BoardFactory <|-- TwoPlayerBoardFactory
     BoardFactory <|-- FourPlayerBoardFactory
-    TwoPlayerBoardFactory *-- BasicPlayerSelector
-    FourPlayerBoardFactory *-- BasicPlayerSelector
     FourPlayerAssets *-- TwoPlayerBoardFactory
-    FourPlayerAssets *-- BasicPlayerSelector
     TwoPlayerAssets *-- FourPlayerBoardFactory
-    TwoPlayerAssets *-- BasicPlayerSelector
     AssetFactory <|-- TwoPlayerAssets
     AssetFactory <|-- FourPlayerAssets
 ```
