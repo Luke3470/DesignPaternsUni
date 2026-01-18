@@ -319,7 +319,7 @@ then states move by themselves and each part is handed individually in the play 
 
   }
 ```
-This is the main Game loop made simple due to all of the previous implementations mentioned. i have use strategy for 
+This is the main Game loop made simple due to all the previous implementations mentioned. i have use strategy for 
 each state
 
 ---------------
@@ -356,18 +356,44 @@ classDiagram
     TextFileObserver ..> CreateFile
 ```
 
-Explain why Base observer
-why txt how uuid why save types and roll not all values then print to console
-Use of payloads in all observers
+For Saving I have used the observer pattern to pass to Details into the file as the pub sub model fills this need very
+well. As well all my observes extend a base observer this is to allow for all observers to be stored in a single list
+making attributes simpler for the game.
+
+
+For Saving Game i have used Java generator to create UUID for game to make sure they are unique.
+I also save types and roll instead of input to allow for the game creator to change the game with the same input to 
+allow for testing of different games rules and see how it play which i think is better than coping to the console as
+it seems quite pointless
+
+
+Also I have use Payloads for all my events to allow for method overloading
 
 
 # Load Game
 
 
-Blah Blah Blah
+loading Game used GameConfigfactory to relate the printed string to the values stored in text.
 
 
 ---------------
-Solid
-Ports and A
-Implemntation
+# SOLID Principles
+
+I have used interface segregation for the game class so the provided interfaces to only allow access to the play method
+as that's all that's required for the interface. As well my classes adhere with LSP and SRP I used the Move outcomes to 
+improve SRP and LSP to adhere to SOLID principles
+
+--------------
+# Architecture
+
+For configs i have split each into different configs for each game and they run in serial so they can be viewed
+in the console in order.  
+
+
+My Game is split into Domain UseCase and Infra and Infra contains all my Observers my use cases are PLay normal and Play
+historic. the Domain contains all game specific code 
+
+--------------
+# Other Implementation
+
+I have also Implemented Mediator, request response pattern and Unit tests for the roll values class
