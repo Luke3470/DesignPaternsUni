@@ -3,6 +3,11 @@ Frustration Game
 ***Software Design And Architecture***
 
 **Author:** *Luke Cadman*
+
+I am Going to Caveat this by stating i am NOT going to be doing complete UML diagrams for any OOP 
+principles. Other than Inheritance because otherwise it becomes ugly and the UML diagrams start to 
+mean less; just become a mess of lines and are harder to interpret.
+
 # Dice Variation
 ```mermaid
 classDiagram
@@ -51,13 +56,10 @@ classDiagram
     }
     
     Dice <|-- DiceDecorator
-    Dice --> DiceDecorator
-    Dice *-- DiceDecorator
     Dice <|-- NonRandomDice
     Dice <|-- SingleDice
     DiceFactory <|-- SingleDiceFactory
     DiceFactory <|-- DoubleDiceFactory
-    SingleDiceFactory *-- DoubleDiceFactory
 ```
 Dice Variations talk about value object and null pattern
 
