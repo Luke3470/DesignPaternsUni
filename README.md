@@ -51,10 +51,13 @@ classDiagram
     }
     
     Dice <|-- DiceDecorator
+    Dice --> DiceDecorator
+    Dice *-- DiceDecorator
     Dice <|-- NonRandomDice
     Dice <|-- SingleDice
     DiceFactory <|-- SingleDiceFactory
     DiceFactory <|-- DoubleDiceFactory
+    SingleDiceFactory *-- DoubleDiceFactory
 ```
 Dice Variations talk about value object and null pattern
 
@@ -81,9 +84,69 @@ classDiagram
     HitCondition <|-- HitConditionStandard
     HitCondition <|-- HitConditionOnePerSpace
 ```
+talk about use of move outcome to simplfy response put in sample
+
 ---------------
-Win variation
-Player
+# Win Variation
+```mermaid
+classDiagram
+
+    class WinCondition {
+        <<interface>>
+        ~checkWin(Board, MoveResult) MoveOutcome
+    }
+    
+    class WinConditionOnePerSpace {
+        +checkHit(Board, MoveResult) MoveOutcome
+        +toString() String
+    }
+    
+    class WinConditionStandard {
+        +checkHit(Board, MoveResult) MoveOutcome
+        +toString() String
+    }
+    
+    WinCondition <|-- WinConditionStandard
+    WinCondition <|-- WinConditionOnePerSpace
+```
+How Similar Designed to Above class just with different outcome
+and show how commands are used in outcome to deal with resets
+and how use of tostring overrides allows for simple file and console output
+
+---------------
+# 4 Player Variation
+```mermaid
+classDiagram
+
+    class AssetFactory {
+        <<interface>>
+        +createPlayers() PlayerIterable
+        +createBoard() createBoard
+    }
+    
+    class PlayerFactory{
+        <<interface>>
+        +construct() Player[]    
+    }
+    
+    class PlayerSelector{
+        <<interface>>
+        +next() Player
+    }
+    
+    class BasicPlayerSelector{
+        -Player[] playerList
+        -int currentPlayer
+        +next() Player
+    }
+    class
+        
+    PlayerSelector <|-- BasicPlayerSelector
+    WinCondition <|-- WinConditionOnePerSpace
+```
+Trying to find somewhere to put an abstract factory as these depedned on each other worked well
+Use of iterator as well in main game loop to allow for cleaner rotation of player which is more expandabkle in future SRP
+---------------
 State Machine
 File Output
 Solid
