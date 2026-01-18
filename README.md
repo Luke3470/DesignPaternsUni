@@ -186,7 +186,8 @@ These Commands have knowledge of the previous move, so they can undo if a move i
 be able to undo actions based on there validation. These are also stored in a stack so historic moves are stored and 
 items can be popped if they need to be undone.
 
-As well i have Overridden the toString method in order to allow for accurate printing of the configuration to the console
+As well i have Overridden the toString method in most variations in
+order to allow for accurate printing of the configuration to the console
 
 
 ---------------
