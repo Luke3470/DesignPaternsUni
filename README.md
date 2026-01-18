@@ -172,7 +172,6 @@ classDiagram
     }
         
     PlayerSelector <|-- BasicPlayerSelector
-    WinCondition <|-- WinConditionOnePerSpace
 ```
 Trying to find somewhere to put an abstract factory as these depedned on each other worked well
 Use of iterator as well in main game loop to allow for cleaner rotation of player which is more expandabkle in future SRP
