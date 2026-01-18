@@ -249,9 +249,17 @@ classDiagram
     AssetFactory <|-- FourPlayerAssets
 ```
 
-Trying to find somewhere to put an abstract factory as these depedned on each other worked well
-Use of iterator as well in main game loop to allow for cleaner rotation of player which is more expandabkle in future SRP
-removed iterator for graph simplicity
+For the Creation of Player and Board Objects I have used something similar to abstract factory pattern.
+Why i say something similar is because it's not exactly the same as i return two factories however the board factories 
+are more concrete implementations for configuring the boards not factories. The reason I did this as board design and
+Player Numbers are Dependent on each other so i thought it would be a good place to use it.
+
+
+I've Used the base iterator interface to create an iterator for the mane game loop to go through players to allow for a 
+nicer game loop as well this is dependent on game state so as soon as game state in is Game Over it will stop looping
+
+
+I've remove Iterator to make the UML simpler
 
 ---------------
 # State Machine
@@ -260,14 +268,59 @@ stateDiagram-v2
     [*] --> Ready
     Ready --> InPlay
     InPlay --> GameOver
-    Ready --> Error
-    InPlay --> Error
-    Error --> [*]
     GameOver --> [*]
 ```
 
-talk about how different states manage different exit conditions etc and how state manages 
-what can happen e.g game lkoop e.g file
+This is an incredible simple State Machine to manage States in th Game How the responsibility are split
+
+
+Game Ready -> Game Configuration 
+In Play -> Main Game Loop
+Game Over -> Saving game result to file
+
+
+```java
+public interface GameState {
+
+  void play();
+
+  void next();
+
+  void show();
+}
+
+```
+All of my states implement the following interface so in my main game all that is called is game.play()
+then states move by themselves and each part is handed individually in the play mechanic
+
+```java
+  @Override
+  public void play() {
+    Dice die = game.getDice();
+    Board board = game.getBoard();
+
+    for (Player player : game.getPlayersList()) {
+      incrementTurn(player);
+
+      MoveResult result = rollAndMove(player, die, board);
+
+      MoveOutcome hitOutcome = hitCondition.checkHit(board, result);
+      if (applyOutcome(hitOutcome, result)) {
+        continue;
+      }
+
+      MoveOutcome winOutcome = winCondition.checkWin(board, result);
+      applyOutcome(winOutcome, result);
+
+      if (winOutcome != null && winOutcome.endsGame()) {
+        this.next();
+      }
+    }
+
+  }
+```
+This is the main Game loop made simple due to all of the previous implementations mentioned. i have use strategy for 
+each state
 
 ---------------
 # Game Save and Replay
