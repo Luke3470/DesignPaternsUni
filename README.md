@@ -5,7 +5,7 @@ Frustration Game
 **Author:** *Luke Cadman*
 
 I am Going to Caveat this by stating i am NOT going to be doing complete UML diagrams for any OOP 
-principles. Other than Inheritance because otherwise it becomes ugly and the UML diagrams start to 
+principles. Other than Inheritance and others in certain cases because otherwise it becomes ugly and the UML diagrams start to 
 mean less; just become a mess of lines and are harder to interpret.
 
 # Dice Variation
@@ -141,7 +141,35 @@ classDiagram
         -int currentPlayer
         +next() Player
     }
-    class
+    class PlayerIterator{
+        +iterator PlayerIterator
+    }
+        
+    class TwoPlayerAssets{
+        +createPlayers() PlayerIterable
+        +createBoard() createBoard
+        +toString() String
+    }
+    
+    class FourPlayerAssets{
+        +createPlayers() PlayerIterable
+        +createBoard() createBoard
+        +toString() String
+    }
+    
+    class TwoPlayerFactory{
+        +construct() Player[]    
+    }
+    
+    class FourPlayerFactory{
+        +construct() Player[]    
+    }
+    class TwoPlayerBoardFactory{
+        +create() Player[]    
+    }
+    class FourPlayerBoardFactory{
+        +create() Player[]    
+    }
         
     PlayerSelector <|-- BasicPlayerSelector
     WinCondition <|-- WinConditionOnePerSpace
