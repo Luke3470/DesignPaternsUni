@@ -222,7 +222,7 @@ classDiagram
         +AssetFactory assets
     }
     
-    BaseObserver --|> FileObserver
+    BaseObserver <|-- FileObserver
     FileObserver <|-- TextFileObserver
     FileObserver ..> CreateFile
     TextFileObserver ..> CreateFile
