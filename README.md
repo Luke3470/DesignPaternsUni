@@ -184,7 +184,11 @@ removed iterator for graph simplicity
 stateDiagram-v2
     [*] --> Ready
     Ready --> in Play
-    InPlay --> Game Over
+    In Play --> Game Over
+    Ready --> Error
+    In Play --> Error
+    Error --> [*]
+    Game Over --> [*]
 ```
 
 talk about how different states manage different exit conditions etc and how state manages 
